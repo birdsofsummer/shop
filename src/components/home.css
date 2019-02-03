@@ -1,0 +1,89 @@
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li { }
+a {
+  color: #42b983;
+}
+span.el-tag {
+    margin-right:1em;
+}
+.color-group {
+	display: grid;
+	grid-template-columns:repeat(5,minmax(auto,80px));
+	justify-content: center;
+	grid-gap: 2px;
+}
+.mycolor{
+ /*   width:44px; */
+ /*   border: 1px solid #ddd;*/
+    object-fit: cover;
+}
+.mycolor-active{
+	border: 1px solid red;
+    opacity:0.8;
+    object-fit: cover;
+}
+.size-group{
+    display:grid;
+    justify-content: center;
+}
+.mysize{
+    height: 2em;
+    padding:0 1em;
+    line-height: 2em;
+    vertical-align: middle;
+    margin-right: 1em;
+    border-radius: 2%;
+}
+.mysize-li {
+	display: grid;
+	grid-template-columns: minmax(auto,50%) auto;
+}
+.mycolor-radio{ display:none; width:0; height:0; }
+
+.mysize-active{ border: 1px solid red; }
+.price-table{
+/*   width: 100%;*/ 
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    display: grid;    
+}
+.price-table table{
+    width:auto !important;
+}
+.el-row img{
+    max-width:100%; 
+}
+.text li{
+    margin:1em 0;
+}
+.el-table td, .el-table th.is-leaf {
+	border-bottom: 1px dashed #ddd;
+}
+
+.User_notes{
+    text-align: left;
+    font-size:0.8rem;
+}
+
+.nav-footer {
+	/* background-color: #ddd; */
+	color: #4d4d4d;
+	height: 50px;
+	width: 100%;
+	padding: 2rem 1rem 0;
+	font-size: 0.8rem;
+}
+
+.nav-footer .el-card{
+    border: none;
+}
+.nav-footer .el-card li{
+    margin-bottom:1rem;
+}
