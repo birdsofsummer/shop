@@ -1,0 +1,1 @@
+curl 'http://jiakai.zhuixun77.top/i/order'   --data '{"name":"ddd","mobile":"123","address":"123","email":"111@www","note":"222","dns":"http://jiakai.zhuixun77.top/","cart_info":{"qty":9,"unit":888,"amount":7992,"diccount":999,"price0":999},"content":[{"color":{"name":"20","url":"/img/1547192561-20.jpg"},"size":"XL","qty":9}]}' 

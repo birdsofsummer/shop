@@ -1,0 +1,60 @@
+{
+  "product_id": 38,
+  "cover": [
+    {
+      "uid": 1,
+      "name": "1.png",
+      "status": "done",
+      "url": "/img/1.jpg"
+    },
+    {
+      "uid": 2,
+      "name": "1.png",
+      "status": "done",
+      "url": "/img/2.jpg"
+    }
+  ],
+  "header": [
+    {
+      "uid": 1,
+      "name": "3.png",
+      "status": "done",
+      "url": "/img/3.jpg"
+    },
+    {
+      "uid": 2,
+      "name": "4.png",
+      "status": "done",
+      "url": "/img/4.jpg"
+    }
+  ],
+  "color": [
+    {
+      "name": "黄色",
+      "url": "/img/3.jpg"
+    }
+  ],
+  "size": [
+    "XL",
+    "2XL"
+  ],
+  "price": [
+    {
+      "qty": 1,
+      "value": 100
+    },
+    {
+      "qty": 2,
+      "value": 95
+    }
+  ],
+  "tag": [
+    "小清新",
+    "大美女"
+  ],
+  "support": [
+    "包邮",
+    "七天包换"
+  ],
+  "content": "好产品"
+}
