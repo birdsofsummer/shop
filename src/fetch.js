@@ -46,7 +46,7 @@ const error_handler=error=>{
 }
 
 const creat_axios=(h={token:123})=>{
-    let instance = axios.create({ baseURL: 'http://localhost:8080' })
+    let instance = axios.create({ baseURL: "/"})
     Object.assign(instance.defaults.headers.common,h);
 //   instance.defaults.timeout = 2500;
 //    instance.interceptors.request.use(say('req'),say('req error'))
