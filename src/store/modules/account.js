@@ -14,7 +14,7 @@ const actions={
         }
     },
     relogin(context,payload){
-        context.commit("save_token")
+        context.commit("save_token",{ root: true })
         router.push("/login")
     },
     async logout(context,payload){ },

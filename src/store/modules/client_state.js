@@ -17,8 +17,10 @@ export const state={
               "price": [ { "qty": 1, "value": 1e10}, { "qty": 2, "value": 1e9} ],
               "tag": [ ],
               "support": [ ],
-              "content": ""
+              "content": "",
+              "packs":[],
         },
+
         address1:{
             name:"",
             address:"",

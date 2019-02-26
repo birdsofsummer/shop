@@ -28,7 +28,7 @@
 <script>
 
 import store from "../store"
-import {drop} from "../fp.js"
+import {drop,place_order1} from "../fp.js"
 import {address_rules} from "./rules"
 import { createNamespacedHelpers } from 'vuex'
 const { mapState,mapGetters,mapActions,mapMutations } = createNamespacedHelpers('client')
@@ -48,11 +48,7 @@ export default {
           if (valid) {
                let d=this.ruleForm;
                this.set_address(d)
-               let {content,cart_info,address1,dress}=this;
-               let dns=window.location.href;
-               let dress1=drop(dress)("content");
-               let o={product_id:dress.id,dns,cart_info,content,...address1,product:dress1};
-              this.place_order(o)
+               place_order1(this)
           }else{
                this.$message({ message: "plz input right address :)", type: 'error',showClose: true, });          
                 return false;

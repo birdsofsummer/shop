@@ -1,5 +1,6 @@
 <template>
   <div id="product_detail">
+
     <el-container>
       <el-header>
           <AdminMenu  active="4" />
@@ -24,14 +25,15 @@
               </el-row>
               <Divider />
               <el-row> 价格 <Price /> </el-row>
+              <el-row> 套餐 <Pack /> </el-row>
               <Divider />
               <el-row> 详情编辑器 <Editor /></el-row>
               <Divider />
               <el-row> <el-button round @click="save">保存修改</el-button></el-row>
           </el-main>
-      <el-footer>
-      </el-footer>
+      <el-footer> </el-footer>
     </el-container>  
+
   </div>
 </template>
 
@@ -39,7 +41,6 @@
 
 
 import store from "../store"
-//import { mapState, mapGetters, mapMutations, mapActions, } from 'vuex'
 
 import { createNamespacedHelpers } from 'vuex'
 import { Loading,Message } from 'element-ui';
@@ -51,6 +52,7 @@ import Divider from './divider'
 import AdminMenu from './admin_menu'
 import Upload from "./Upload.vue"
 import Price from "./price"
+import Pack from "./pack"
 import Tag from "./tag"
 import Editor from "./editor"
 import Footer from './footer.vue'
@@ -60,7 +62,7 @@ const { mapState,mapGetters,mapActions,mapMutations } = createNamespacedHelpers(
 export default {
   name: 'AddProduct',
   props: { },
-  components: { Divider,Footer,Upload,Price,Tag,Editor,AdminMenu},
+  components: { Divider,Footer,Upload,Price,Tag,Editor,AdminMenu,Pack},
   data() { return {} },
   watch: {},
   computed: mapState({ product_detail:'product_detail' }), 

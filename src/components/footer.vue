@@ -47,7 +47,7 @@
 
 </el-row>  
        <footer>
-           Copyright @ 2019 版权所有
+           Copyright @ 2019 {{dns}}  版权所有
       </footer>
   </nav>
   
@@ -70,7 +70,9 @@ export default {
   props: { },
   computed:{ ...mapState(['services']) ,},
   data() {
-      return {}
+      return {
+          dns:window.location.hostname
+      }
   },
   created(){ },
   mounted(){ },

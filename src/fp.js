@@ -102,6 +102,9 @@ const mapState1=(o={})=>(key="")=>{
     }
 }
 
+const int_formator=(kk=['price','qty'])=>x=>Object.entries(x).map(([k,v])=>(kk.includes(k) ? [k,+v]:[k,v]))
+const int_formators=(kk=['price','qty'])=>(arr=[])=>arr.map(int_formator(kk)).map(Object.fromEntries)
+
 const slice1=(arr=[])=>(current=1)=>(size=10)=>{
       let p1=current*size,p2=p1+size;
       return arr.slice(p1,p2)
@@ -112,7 +115,65 @@ const len1=(arr=[])=>(size=1)=>{
     return [l1,l2]
 }
 
+
 const islocal=/localhost/.test(window.location.href)
+
+
+/*
+const cs=(n=1)=>(a=[])=>(b=[])=>Array(n).fill(0).map((v)=>a.map((k,i)=>b.map((bb,j)=>[i,j,0])).flat())
+const cs1=(n=1)=>(a=[])=>(b=[])=>Array(n).fill(0).map((v,nn)=>a.map((k,i)=>b.map((bb,j)=>[nn,i,j,0])).flat()).flat()
+
+const cross_join2=(n=1)=>(a=[])=>(b=[])=>Array(n).fill(0).map((nn)=>a.map((k,i)=>b.map((bb,j)=>[[nn,i,j].join('_'),k,bb,false])).flat().reduce((acc,[index,color,size,checked])=>({...acc,[index]:{color,size,checked,index}}),{}))
+
+const cross_join2_d=(pack=[])=>pack.map(x=>Object.entries(x).filter(([k,v])=>v.checked==true)).flat().map(x=>x[1])
+const reset_pack_row=(x,i)=>Object.entries(x).forEach(([k,v])=>x[k].checked=k=="0_0_0"?true:false)
+const reset_pack=(pack=[])=>pack.forEach(reset_pack_row)
+const init_pack_row=x=>Object.entries(x).forEach(([k,v])=>x[k].checked=false)
+const init_pack=(pack=[])=>(row=0)=>init_pack_row(pack[row])
+
+const set_pack=(pack=[])=>(n,...i)=>{
+    init_pack(pack)(n)
+    pack[n][i.join("_")].checked = true
+}
+
+*/
+
+const init_current_pack=(n=1)=>Array(n).fill(0).map(()=>({color:0,size:0}))
+
+const current_pack_gen=(i=0,n=1,unit=999)=>{
+       const current_pack=init_current_pack(n);
+       return {
+            content:current_pack,
+            cart_info:{
+                qty:1,
+                qty1:i,
+                unit,
+                amount:unit,
+                discount:0,
+            }
+        }
+}
+
+const current_pack_decode=({color,size,packs,current_pack:{content,cart_info}})=>{
+    const parse_color_size=(x)=>({color:color[x.color],size:size[x.size],i:[x.color,x.size].join("_")})
+    const c1=content.map(parse_color_size)
+    return {"content":c1,cart_info}
+}
+const place_order1=({content,cart_info,address1,dress,place_order})=>{
+   let dns=window.location.href;
+   let dress1=drop(dress)("content");
+   let o={product_id:dress.id,dns,cart_info,content,...address1,product:dress1};
+    place_order(o)
+
+}
+
+
+const updateRow=({i,table,row})=>{
+   const t=cp(table)
+   t[i]=cp(row)
+   return t;
+}
+const log=x=>console.log(JSON.parse(JSON.stringify(x)))
 export {
     cross_join,
     sum,
@@ -128,7 +189,7 @@ export {
     add2,
     add3,
     rnd,
-    updateById,updateById1,
+    updateById,updateById1,updateRow,
     removeById,
     getIndexById,
     append,
@@ -151,4 +212,6 @@ export {
     mapState1,
     islocal,
     slice1,len1,
+    init_current_pack,current_pack_gen,current_pack_decode,
+    place_order1
 }

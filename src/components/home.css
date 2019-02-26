@@ -87,3 +87,83 @@ span.el-tag {
 .nav-footer .el-card li{
     margin-bottom:1rem;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.v-image__image--cover{
+    object-fit:cover;
+    background-size:auto;
+}
+
+.product-detail-container img{ max-width:100%; }
+
+.color0{
+	margin-right: 3px;
+	border: solid 1px #ddd;
+    display:flex;
+    flex-flow: column;
+}
+.active-color{
+   border: solid 1px red;
+}
+
+.size0 {
+	display: inline-flex;
+	margin-right: 3px;
+	border: solid 1px #ddd;
+	padding: 0 3px;
+}
+
+.active-size{
+   border: solid 1px red;
+}
+.pack-qty{
+    margin:1rem 0;
+    text-align:left;
+}
+.pack-container{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    max-width: 100%;
+    width:100%;
+    grid-auto-flow: column;    
+}
+@media (max-width: 1000px) {
+.pack-container{
+    grid-template-columns: auto;
+    grid-auto-flow: row;    
+}
+}
+.color-container{
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: repeat(5,auto);
+}
+
+.size-container{
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: repeat(10,auto);
+}
+
+.list-text:not(:last-child)::after {
+	content: "|";
+	margin: 0 0.5rem;
+}
+.grid-img{
+   display:grid;
+   grid-column-gap: 1rem;
+   grid-auto-flow: column;   
+}

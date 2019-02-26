@@ -4,6 +4,7 @@ import { Message,Loading } from 'element-ui';
 import store from "../store"
 
 import HomePage from '../components/home'
+import HomePage1 from '../components/home1'
 import Order from '../components/order'
 import Delivery from "../components/delivery"
 import Returnpolicy from "../components/returnpolicy"
@@ -53,7 +54,7 @@ const auth=(to, from, next) => {
 
 const router=new Router({
   routes: [
-    { path: '/', name: 'homepage', component: HomePage ,
+    { path: '/', name: 'homepage', component: HomePage1 ,
         beforeEnter: async(to, from, next) => {
               store.dispatch('client/get_dress')
               next();
