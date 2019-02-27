@@ -9,8 +9,8 @@ npm install
 ```
 npm run serve
 
-http://jiakai.zhuixun77.top
-http://jiakai.zhuixun77.top/#/login
+https://jiakai.zhuixun77.top
+https://jiakai.zhuixun77.top/#/login
 
 http://localhost:8080
 http://localhost:8080/#/login

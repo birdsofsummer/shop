@@ -35,11 +35,11 @@
 
     <v-list dense>
            <v-list-tile>
-              <v-list-tile-content>秒杀价</v-list-tile-content>
+              <v-list-tile-content>秒殺價</v-list-tile-content>
               <v-list-tile-content class="align-start"> {{currency}} {{price_2}}</v-list-tile-content>
            </v-list-tile>
            <v-list-tile>
-              <v-list-tile-content>吊牌价</v-list-tile-content>
+              <v-list-tile-content>吊牌價</v-list-tile-content>
               <v-list-tile-content class="align-start">{{currency}} {{price_1}}</v-list-tile-content>
            </v-list-tile>
            <v-list-tile>
@@ -47,7 +47,7 @@
               <v-list-tile-content class="align-start">{{sales_volume}}件</v-list-tile-content>
            </v-list-tile>
            <v-list-tile>
-              <v-list-tile-content>还剩</v-list-tile-content>
+              <v-list-tile-content>還剩</v-list-tile-content>
               <v-list-tile-content class="align-start"> {{volume}}件</v-list-tile-content>
            </v-list-tile>
    </v-list>
@@ -55,7 +55,7 @@
 
     <v-list dense>
            <v-list-tile v-if="tag.length>0">
-              <v-list-tile-content>风格</v-list-tile-content>
+              <v-list-tile-content>風格</v-list-tile-content>
               <v-list-tile-content class="align-start">
                   <v-container grid-list-md>
                     <v-layout row wrap>
@@ -85,7 +85,7 @@
 
     <v-list dense>
            <v-list-tile>
-              <v-list-tile-content>颜色</v-list-tile-content>
+              <v-list-tile-content>顏色</v-list-tile-content>
               <v-list-tile-content class="align-start">
 
                   <v-container grid-list-md>
@@ -126,7 +126,7 @@
   </v-list>
                   <v-container  fluid>
                         <v-radio-group v-model="current_pack.cart_info.qty1" @change="change_pack_qty1()">
-                              <v-radio v-for="(k,i) in packs" :key="'pack'+i" :label="`${k.name} - ${k.qty}件 -${currency} ${k.price}`" :value="i" color="red"></v-radio>
+                              <v-radio v-for="(k,i) in price" :key="'pack'+i" :label="`${k.name} - ${k.qty}件 -${currency} ${k.value}`" :value="i" color="red"></v-radio>
                          </v-radio-group>                      
                   </v-container>              
 
@@ -186,18 +186,18 @@
     <v-layout row>
 
       <v-flex xs4>
-        <v-subheader>数量:</v-subheader>
+        <v-subheader>數量:</v-subheader>
       </v-flex>
 
       <v-flex xs4>
-        <v-text-field label="购买数量" v-model = "current_pack.cart_info.qty" @keyup="change_pack_qty($event)" suffix="套" ></v-text-field>
+        <v-text-field label="購買數量" v-model = "current_pack.cart_info.qty" @keyup="change_pack_qty($event)" suffix="套" ></v-text-field>
       </v-flex>
     </v-layout>
 
     <v-layout row>
 
       <v-flex xs4>
-        <v-subheader>价格:</v-subheader>
+        <v-subheader>價格:</v-subheader>
       </v-flex>
 
       <v-flex xs4>
@@ -291,8 +291,8 @@ export default {
   },
   watch:{
     dress:function(n,o){ 
-        let pn = this.packs[0] ? this.packs[0].qty : 1 ;
-        let ps=this.packs[0] ? this.packs[0].price : 1e10;
+        let pn = this.price[0] ? this.price[0].qty : 1 ;
+        let ps=this.price[0] ? this.price[0].value: 1e10;
         this.current_pack=current_pack_gen(0,pn,ps)
         this.order=current_pack_decode(this)
         window.document.title=n.name
@@ -322,8 +322,8 @@ export default {
       change_pack_qty1(){
           let 
               q1=this.current_pack.cart_info.qty1
-              ,{name,qty,price}=this.packs[q1];
-          this.current_pack=current_pack_gen(q1,qty,price)
+              ,{name,qty,value}=this.price[q1];
+          this.current_pack=current_pack_gen(q1,qty,value)
           this.pack_qty=qty;
           this.order=current_pack_decode(this)
       },

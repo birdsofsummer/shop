@@ -15,6 +15,10 @@ function install(){
 }
 function build(){
     npm run build
+    cd dist
+    cp index.html template.html
+    cd ..
+    tar cvf dist.tar dist
 }
 
 function run(){

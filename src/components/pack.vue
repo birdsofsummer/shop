@@ -7,18 +7,18 @@
       <el-input v-model="form.name" autocomplete="off"></el-input>
     </el-form-item>
 
-    <el-form-item label="数量" :label-width="formLabelWidth">
+    <el-form-item label="數量" :label-width="formLabelWidth">
       <el-input-number v-model="form.qty"  :min="1" :max="10000000000" label="件"></el-input-number>
     </el-form-item>
 
-    <el-form-item label="价格" :label-width="formLabelWidth">
-      <el-input-number v-model="form.price"  :min="1" :max="10000000000"></el-input-number>
+    <el-form-item label="價格" :label-width="formLabelWidth">
+      <el-input-number v-model="form.value"  :min="1" :max="10000000000"></el-input-number>
     </el-form-item>
   </el-form>
 
   <div slot="footer" class="dialog-footer">
     <el-button @click="dialogFormVisible = false">取 消</el-button>
-    <el-button type="primary" @click="save()">确 定</el-button>
+    <el-button type="primary" @click="save()">確定</el-button>
   </div>
 
 </el-dialog>
@@ -39,7 +39,7 @@
     </el-table-column>
     <el-table-column label="价格" width="180">
         <template slot-scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.price}}</span>
+        <span style="margin-left: 10px">{{ scope.row.value}}</span>
       </template>    
     </el-table-column>
 
@@ -66,10 +66,10 @@
     const form0={
                 "name":"xxxxxxxxxxxx套餐",
                 "qty":1,
-                 price:1000,
+                 value:1000,
     }
 export default {
-    computed: mapState({ tableData0:s=>s.product_detail.packs,}), 
+    computed: mapState({ tableData0:s=>s.product_detail.price,}), 
     components: { Divider},
     data() {
       return {
@@ -106,7 +106,7 @@ export default {
            this.save1(this.tableData)
      },
      save1(n){
-           let d={packs:n}
+           let d={price:n}
            this.set_product_detail(d)
            Message.success(':)');
      }

@@ -24,7 +24,7 @@
                  <span class="tag-title">支持</span><Tag name="support" :dynamicTags='product_detail.support' />
               </el-row>
               <Divider />
-              <el-row> 价格 <Price /> </el-row>
+              <!--el-row> 价格 <Price /> </el-row-->
               <el-row> 套餐 <Pack /> </el-row>
               <Divider />
               <el-row> 详情编辑器 <Editor /></el-row>

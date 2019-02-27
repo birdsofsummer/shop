@@ -26,30 +26,8 @@ const state={
           "header":[{name:"灰色",url:"/img/1.jpg"}],
           "color": [{name:"灰色",url:"/img/1.jpg"}],
           "size": ["均码"],
-          "price": [ { "qty": 1, "value": 1e4}, { "qty": 2, "value": 1e3} ],
-          "packs": [
-            {
-              "qty": 1,
-              "price": 123,
-              "name": "cccc"
-            },
-            {
-              "qty": 2,
-              "price": 222,
-              "name": "dddd"
-            },
-            {
-              "qty": 3,
-              "price": 333,
-              "name": "eee"
-            },
-            {
-              "qty": 4,
-              "price": 444,
-              "name": "zzzz"
-            }
-          ],
-              "tag": ["修身型","直筒","A字型" ],
+          "price": [ { "qty": 1, "value": 1e4,"name":"test1"}, { "qty": 2, "value": 1e3,"name":"test2"} ],
+          "tag": ["修身型","直筒","A字型" ],
           "support": ["包邮","七天包换"],
           "content": "<h4>商品描述</h4><br/><br/><br/><br/><h4>细节展示</h4>"
     },

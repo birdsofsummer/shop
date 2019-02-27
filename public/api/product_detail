@@ -1,28 +1,6 @@
 {
   "id": 0,
   "name": "螺蛳粉是广西壮族自治区柳州市的小吃米粉，具有辣、爽、鲜、酸、烫的独特风味",
-  "packs": [
-    {
-      "qty": 1,
-      "price": 123,
-      "name": "cccc"
-    },
-    {
-      "qty": 2,
-      "price": 222,
-      "name": "dddd"
-    },
-    {
-      "qty": 3,
-      "price": 333,
-      "name": "eee"
-    },
-    {
-      "qty": 4,
-      "price": 444,
-      "name": "zzzz"
-    }
-  ],
   "cover": [
     {
       "uid": 1,
@@ -81,11 +59,13 @@
   "price": [
     {
       "qty": 1,
-      "value": 888
+      "value": 888,
+      "name":"cccc"
     },
     {
       "qty": 2,
-      "value": 777
+      "value": 777,
+      "name":"dddd"
     }
   ],
   "price_1": 99999,

@@ -14,11 +14,10 @@ export const state={
               "header": [ ],
               "color": [{name:"灰色",url:"/img/1.jpg"}],
               "size": ["均码"],
-              "price": [ { "qty": 1, "value": 1e10}, { "qty": 2, "value": 1e9} ],
+              "price": [ { "qty": 1, "value": 1e10,"name":"test1"}, { "qty": 2, "value": 1e9,"name":"test2"}, ],
               "tag": [ ],
               "support": [ ],
               "content": "",
-              "packs":[],
         },
 
         address1:{

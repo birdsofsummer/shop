@@ -92,6 +92,11 @@ const int_proxys1=(kk=[])=>(o={})=>new Proxy(o,{
 }})
 const int_fomator=(k=[])=>(o={})=>cp(int_proxys(k)(o))
 const int_fomator1=(k=[])=>(o={})=>cp(int_proxys1(k)(o))
+
+
+const int_formator=(kk=['value','qty'])=>x=>Object.entries(x).map(([k,v])=>(kk.includes(k) ? [k,+v]:[k,v]))
+const int_formators=(kk=['value','qty'])=>(arr=[])=>arr.map(int_formator(kk)).map(Object.fromEntries)
+
 const localStorage1=json_proxy(window.localStorage)
 const mapState1=(o={})=>(key="")=>{
     let a=o[key];
@@ -102,8 +107,6 @@ const mapState1=(o={})=>(key="")=>{
     }
 }
 
-const int_formator=(kk=['price','qty'])=>x=>Object.entries(x).map(([k,v])=>(kk.includes(k) ? [k,+v]:[k,v]))
-const int_formators=(kk=['price','qty'])=>(arr=[])=>arr.map(int_formator(kk)).map(Object.fromEntries)
 
 const slice1=(arr=[])=>(current=1)=>(size=10)=>{
       let p1=current*size,p2=p1+size;
