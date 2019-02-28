@@ -30,7 +30,7 @@
           </v-layout>
         </v-container>
    
-    <div v-html="content"> {{content}} </div>
+    <div v-html="content" class="product-detail-container"> {{content}} </div>
     <v-divider />
 
     <v-list dense>
@@ -87,10 +87,9 @@
    </v-list>
 
     <v-list dense>
-           <v-list-tile>
-              <v-list-tile-content>顏色</v-list-tile-content>
+           <v-list-tile class="color-list">
+              <v-list-tile-content class="color-title" >顏色</v-list-tile-content>
               <v-list-tile-content class="align-start">
-
                   <v-container grid-list-md>
                     <v-layout row wrap>
                       <v-flex xs12 sm6 md8 align-start  layout text-xs-center >
@@ -106,13 +105,12 @@
               </v-list-tile-content>
            </v-list-tile>
 
-           <v-list-tile>
-              <v-list-tile-content>尺寸</v-list-tile-content>
-              <v-list-tile-content class="align-start"> 
-
+           <v-list-tile class="size-list">
+              <v-list-tile-content class="size-title">尺寸</v-list-tile-content>
+              <v-list-tile-content class="align-center"> 
                   <v-container grid-list-md>
                     <v-layout row wrap>
-                      <v-flex xs12 sm6 md8 align-start layout text-xs-center >
+                      <v-flex xs12 sm6 md8 align-center layout text-xs-center class="list-text-container">
                          <span class="list-text"  v-for="(k,i) in size" :key="'size'+i">{{k}}</span>
                       </v-flex>
                     </v-layout>
@@ -129,7 +127,7 @@
   </v-list>
                   <v-container  fluid>
                         <v-radio-group v-model="current_pack.cart_info.qty1" @change="change_pack_qty1()">
-                              <v-radio v-for="(k,i) in price" :key="'pack'+i" :label="`${k.name} - ${k.qty}件 -${currency} ${k.value}`" :value="i" color="red"></v-radio>
+                              <v-radio v-for="(k,i) in price" :key="'pack'+i" :label="`${ k.name ? k.name : i+1 } - ${k.qty}件 -${currency} ${k.value}`" :value="i" color="red"></v-radio>
                          </v-radio-group>                      
                   </v-container>              
 
@@ -226,7 +224,7 @@
     </v-layout>
 
 
-    <v-layout row>
+    <v-layout row class="qty-container">
 
       <v-flex xs4>
         <v-subheader>數量:</v-subheader>

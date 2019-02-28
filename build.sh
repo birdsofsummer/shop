@@ -31,10 +31,11 @@ function build(){
     npm run build
     cd dist
     cp index.html template.html
+    cp index.html admin.html
     cd ..
     tar cvf dist.tar dist
     d="/opt/jiakai/static/"
-    cp -R dist/* $d
+    [[ -d $d  ]] &&  cp -R dist/* $d
 }
 
 function run(){
