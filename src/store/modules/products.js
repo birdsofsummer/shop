@@ -56,7 +56,8 @@ const actions={
     },
     async save_product_detail(context,payload){
          let d=context.state.product_detail
-         when("修改详情",api.product_detail.update(d));
+         //when("修改详情",api.product_detail.update(d));
+         when("修改详情",api.product_detail.creat(d));
 
     },
 

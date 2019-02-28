@@ -9,8 +9,8 @@
 
           <el-main style="text-align:left">
               <el-row> 封面<Upload name="cover" /> </el-row>
-              <el-row> 轮播<Upload name="header" /> </el-row>
-              <el-row> 颜色 <Upload name="color" /> </el-row>
+              <el-row> 輪播<Upload name="header" /> </el-row>
+              <el-row> 顏色 <Upload name="color" /> </el-row>
               <Divider />
               <el-row> 
                  <span class="tag-title">尺寸</span> <Tag name="size" :dynamicTags='product_detail.size' />
@@ -24,10 +24,10 @@
                  <span class="tag-title">支持</span><Tag name="support" :dynamicTags='product_detail.support' />
               </el-row>
               <Divider />
-              <!--el-row> 价格 <Price /> </el-row-->
+              <!--el-row> 價格 <Price /> </el-row-->
               <el-row> 套餐 <Pack /> </el-row>
               <Divider />
-              <el-row> 详情编辑器 <Editor /></el-row>
+              <el-row> 詳情編輯器 <Editor /></el-row>
               <Divider />
               <el-row> <el-button round @click="save">保存修改</el-button></el-row>
           </el-main>

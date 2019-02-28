@@ -34,6 +34,7 @@
     <v-divider />
 
     <v-list dense>
+    <!--
            <v-list-tile>
               <v-list-tile-content>秒殺價</v-list-tile-content>
               <v-list-tile-content class="align-start"> {{currency}} {{price_2}}</v-list-tile-content>
@@ -42,6 +43,8 @@
               <v-list-tile-content>吊牌價</v-list-tile-content>
               <v-list-tile-content class="align-start">{{currency}} {{price_1}}</v-list-tile-content>
            </v-list-tile>
+
+       -->    
            <v-list-tile>
               <v-list-tile-content>已售</v-list-tile-content>
               <v-list-tile-content class="align-start">{{sales_volume}}件</v-list-tile-content>
@@ -183,6 +186,46 @@
 
  <v-divider />
 
+<v-layout row>
+  <v-flex xs12>
+         <p>已選</p>
+         <table style="width:100%;">
+             <thead>
+               <th > # </th>
+               <th > 預覽</th>
+               <th > 顏色 </th>
+               <th > 尺寸 </th>
+             </thead>
+             <tbody>
+                  <tr v-for="(c,i) in order.content" :key="'oo'+i">
+                       <td> {{i+1}}</td>
+                       <td> <v-avatar :tile="true" :size="40" color="grey lighten-4"> <img :src="c.color.url" :alt="c.color.name"> </v-avatar> </td>
+                       <td> {{c.color.name}}</td>
+                       <td> {{c.size}}</td>
+                   </tr>
+             </tbody>
+         </table>
+         <p> </p>
+    </v-flex>
+</v-layout>
+
+
+ <v-divider />
+
+
+    <v-layout row>
+      <v-flex xs4>
+        <v-subheader>套餐名:</v-subheader>
+      </v-flex>
+
+      <v-flex xs4>
+        <v-subheader>
+          套餐  {{current_pack.cart_info.qty1+1}} {{price[current_pack.cart_info.qty1].name}}
+        </v-subheader>
+      </v-flex>
+    </v-layout>
+
+
     <v-layout row>
 
       <v-flex xs4>
@@ -190,7 +233,11 @@
       </v-flex>
 
       <v-flex xs4>
+
+        <v-subheader>
         <v-text-field label="購買數量" v-model = "current_pack.cart_info.qty" @keyup="change_pack_qty($event)" suffix="套" ></v-text-field>
+
+        </v-subheader>
       </v-flex>
     </v-layout>
 
@@ -201,7 +248,9 @@
       </v-flex>
 
       <v-flex xs4>
+        <v-subheader>
         {{currency}}  {{current_pack.cart_info.amount}}
+        </v-subheader>
       </v-flex>
     </v-layout>
 
@@ -312,8 +361,9 @@ export default {
       //改数量
       change_pack_qty(e){
           let v0=+e.target.value;
-          if (v0<1) e.target.value=1;
-          let v=v0||1;
+          let v= ( v0<1 || isNaN(v0)) ? 1  : v0
+          e.target.value = v;
+          this.current_pack.cart_info.qty=v;
           const {unit,qty}=this.current_pack.cart_info
           this.current_pack.cart_info.amount=unit*qty;
           this.order=current_pack_decode(this)

@@ -97,7 +97,7 @@ const creat_api=(name)=>{
             'get':['list','read'],
             'put':['update'],
             'delete':['del'],
-            'post':['creat'],
+            'post':['creat','create'],
       };
       let a={};
       let f1=(k,v,i,o)=>map(x=>a[x]=http[k](addr[name]))(v)

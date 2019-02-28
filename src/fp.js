@@ -176,6 +176,9 @@ const updateRow=({i,table,row})=>{
    t[i]=cp(row)
    return t;
 }
+const addRow=({table,row})=>([...table,{...row}])
+const delRow=({i,table}={i:0,table:[]})=>table.filter((x,n)=>n!==i)
+
 const log=x=>console.log(JSON.parse(JSON.stringify(x)))
 export {
     cross_join,
@@ -192,7 +195,7 @@ export {
     add2,
     add3,
     rnd,
-    updateById,updateById1,updateRow,
+    updateById,updateById1,updateRow,delRow,addRow,
     removeById,
     getIndexById,
     append,

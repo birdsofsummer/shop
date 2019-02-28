@@ -11,7 +11,7 @@
                   <div class="search-bar">
                      <el-input v-model="search" size="mini" placeholder="搜索收件人" list="cars"/>
                      <datalist id="cars"> <option v-for="item in data.map(x=>x.name)" :value="item"></option> </datalist>
-                     <el-button size="mini" type="danger" @click="to_excel">导出</el-button>         
+                     <el-button size="mini" type="danger" @click="to_excel">導出</el-button>         
               </div>
               </el-row>
 <Divider />
@@ -31,7 +31,7 @@
         <el-form label-position="left" inline class="demo-table-expand">
               <el-form-item  v-for="item in schema" :label="item[1]">
                   <!-- span >{{ props.row[item[0]] | it(item[0]) }}</span -->
-                  <div class="content" :contenteditable="item[2]==1" placeholder="请输入" @input="handleInput(props.row ,item[0],$event)" >{{props.row[item[0]] |it(item[0])}} </div>
+                  <div class="content" :contenteditable="item[2]==1" placeholder="請輸入" @input="handleInput(props.row ,item[0],$event)" >{{props.row[item[0]] |it(item[0])}} </div>
               </el-form-item>
         </el-form>
       </template>
@@ -41,20 +41,20 @@
 
     <el-table-column sortable type="index" :index="indexMethod"> </el-table-column>    
 
-    <el-table-column sortable label="下单时间" prop="create_time" width="150"> 
+    <el-table-column sortable label="下單時間" prop="create_time" width="160"> 
       <template slot-scope="scope">
         <i class="el-icon-time"></i> <span style="margin-left: 10px">{{scope.row.create_time|create_time}}</span>
       </template>
     </el-table-column>
-    </el-table-column> <el-table-column sortable label="ID" prop="id" width="55"> </el-table-column>
-    </el-table-column> <el-table-column sortable label="货号" prop="product_id" width="55"> </el-table-column> 
+    </el-table-column> <el-table-column sortable label="ID" prop="id" width="160"> </el-table-column>
+    </el-table-column> <el-table-column sortable label="貨號" prop="product_id" width="150"> </el-table-column> 
 
-    <el-table-column sortable label="收件人" prop="name" width="80" >
+    <el-table-column sortable label="收件人" prop="name" width="150" >
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top">
             <el-form label-position="left" class="demo-table-expand">
                   <el-form-item  v-for="item in schema" :label="item[1]">
-                       <div class="content" :contenteditable="item[2]==1" placeholder="请输入" @input="handleInput(scope.row ,item[0],$event)" >{{scope.row[item[0]] |it(item[0])}} </div>
+                       <div class="content" :contenteditable="item[2]==1" placeholder="請輸入" @input="handleInput(scope.row ,item[0],$event)" >{{scope.row[item[0]] |it(item[0])}} </div>
                   </el-form-item>
             </el-form>
           <div slot="reference" class="name-wrapper"> <span > {{ scope.row.name }}</span> </div>
@@ -62,14 +62,15 @@
       </template>
     </el-table-column>
 
-    <el-table-column sortable   label="详情" class-name="hide"  prop="content" > </el-table-column>
-    <el-table-column sortable   label="备注" prop="remark">
+    <el-table-column sortable   label="詳情" class-name="hide"  prop="content" > </el-table-column>
+
+    <el-table-column sortable   label="備註" prop="remark"  width="250"  >
       <template slot-scope="scope">
-        <span contenteditable="true"  placeholder="请输入备注"  @input="handleInput(scope.row ,'remark',$event)" > {{ scope.row.remark}}</span>
+        <span contenteditable="true"  placeholder="請輸入備註"  @input="handleInput(scope.row ,'remark',$event)" > {{ scope.row.remark}}</span>
       </template>
     </el-table-column>
 
-    <el-table-column prop="delivery" label="快递" width="100" 
+    <el-table-column prop="delivery" label="快遞" width="100" 
       :filters="delivery"
       :filter-method="filterTag"
       filter-placement="bottom-end"
@@ -81,20 +82,21 @@
       </template>
     </el-table-column>
 
-    <el-table-column align="left">
+    <el-table-column align="left"  width="30"   >
       <template slot="header" slot-scope="scope">
         <span>操作</span>
       </template>
     
       <template slot-scope="scope">
-        <el-button size="mini" icon="el-icon-upload" type="text" @click="handleEdit(scope.$index, scope.row)" title="保存" :disabled="current.id == scope.row.id ? false : true"></el-button>
+        <el-button  icon="el-icon-upload" style="margin-right:1rem;" type="text" @click="handleEdit(scope.$index, scope.row)" title="保存" :disabled="current.id == scope.row.id ? false : true">
+        </el-button>
         <el-popover placement="top" width="160"  trigger="click">
-          <p>确定删除吗？</p>
+          <p>確定刪除嗎？</p>
           <div style="text-align: right; margin: 0">
-            <el-button size="mini" type="text" >取消</el-button>
+            <el-button  type="text" >取消</el-button>
             <el-button type="success" icon="el-icon-check" circle size="mini"   @click="handleDelete(scope.$index, scope.row)"></el-button>
           </div>
-          <el-button  type="text"  icon="el-icon-delete" size="mini"  slot="reference" title="删除"></el-button>
+          <el-button  type="text"  icon="el-icon-delete"  slot="reference" title="刪除"></el-button>
         </el-popover>
     </template>
     </el-table-column>
@@ -174,17 +176,17 @@ export default {
         },
         multipleSelection: [],
         schema:[
-              [ "create_time", "下单时间" ,0],
-              [ "id", "订单号", 0],
-              [ "product_id", "货号",1 ],
-              [ "content", "订单详情",1 ],
+              [ "create_time", "下單時間" ,0],
+              [ "id", "訂單號", 0],
+              [ "product_id", "貨號",1 ],
+              [ "content", "訂單詳情",1 ],
               [ "name", "收件人" ,1], 
               [ "address", "地址" ,1],
-              [ "mobile", "手机" ,1],
+              [ "mobile", "手機" ,1],
               [ "email", "email" ,1],
               [ "note", "留言" ,1],
-              [ "delivery", "快递单号",1 ],
-              [ "remark", "备注" ,1],
+              [ "delivery", "快遞單號",1 ],
+              [ "remark", "備註" ,1],
             ],
         }
     },

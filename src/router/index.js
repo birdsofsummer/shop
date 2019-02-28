@@ -52,17 +52,17 @@ const auth=(to, from, next) => {
        next()
 }
 
+const is_admin=/www/.test(location.href)
 const init_home=async(to, from, next) => {
-              store.dispatch('client/get_dress')
+              if (!is_admin) store.dispatch('client/get_dress')
               next();
 }
-const is_admin=/www/.test(location.href)
 
 
 const router=new Router({
   routes: [
     { path: '/', name: 'homepage', component:is_admin? Login : HomePage1, beforeEnter:init_home},
-    { path: '/index', name: 'homepage', component: HomePage , beforeEnter:init_home},
+    { path: '/index', name: 'homepage1', component: HomePage , beforeEnter:init_home},
     { path: '/order', name: 'order', component: Order},
     { path: '/delivery', name: 'delivery', component:Delivery},
     { path: '/returnpolicy', name: 'returnpolicy', component:Returnpolicy},
