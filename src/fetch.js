@@ -1,4 +1,4 @@
-import { islocal, reducer, spread, pspread, say, copy, say_error, each, map, queque, localStorage1, } from "./fp"
+import { islocal, reducer, spread, pspread, say, copy, say_error, each, map, queque, localStorage1, url_formator,maybe_json,tojson,} from "./fp"
 import axios from 'axios'
 import { Message,Loading } from 'element-ui';
 
@@ -114,21 +114,40 @@ const creat_api1=(urls={})=>{
       return aa;
 }
 
+
+
+
 const api0=creat_api1(addr);
 const api1={
     place_order:async(d)=>{
         let loadingInstance = Loading.service({ fullscreen: true });
         let r=await post(addr.place_order)(d)
         loadingInstance.close();
+        r.data={};
        if (r.ok){
            Message.success({ message: "success!", type: 'success',showClose: true, });
+           r.data=await r.json();
+           let {order_id}=r.data;
            //store.dispatch('go',"/order");
-           router.push("/order")
-           return r
+           router.push(`/order/${order_id}`)
        }else{
            Message.error({ message: "fail!", type: 'error',showClose: true, });
-           return {ok:false,...r}
        }
+       return r;
+    },
+    get_order:async(d={id:0})=>{
+
+        let u0='/i/orders/:{id}'
+        let u1=url_formator(u0)(d)
+        let r=await fetch(u1);
+        let t=await r.text();
+        let j=tojson(t);
+        r.data=j;
+
+        if ( !r.ok){
+           Message.error({ message: "fail!", type: 'error',showClose: true, });
+        }
+        return r
     },
     get_detail:async()=>{
         let loadingInstance = Loading.service({ fullscreen: true });

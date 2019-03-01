@@ -30,6 +30,7 @@
   import store from "../store"
   import { createNamespacedHelpers } from 'vuex'
   import {drop,place_order1} from "../fp.js"
+  import "./error.css"
   const { mapState,mapGetters,mapActions,mapMutations } = createNamespacedHelpers('client')
 
 export default {
@@ -114,11 +115,4 @@ export default {
   }
 </script>
 
-<style>
 
-.error--text {
-	color: #ff5252 !important;
-	caret-color: #ff5252 !important;
-}
-
-</style>

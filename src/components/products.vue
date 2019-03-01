@@ -228,7 +228,7 @@ export default {
           this.default_product={...row} 
           this.dialogFormVisible= true
       },
-      handleEdit1(index, row) { router.history.push(`/products/detail/${index}`) },
+      handleEdit1(index, row) { router.history.push(`/products/detail/${row.id}`) },
       handleDelete(index, row) {
             this.del_product(row)
       },

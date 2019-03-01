@@ -6,6 +6,8 @@ import store from "../store"
 import HomePage from '../components/home'
 import HomePage1 from '../components/home1'
 import Order from '../components/order'
+import Order1 from '../components/order1'
+import SearchOrder from '../components/search_order'
 import Delivery from "../components/delivery"
 import Returnpolicy from "../components/returnpolicy"
 import Process from "../components/process"
@@ -57,13 +59,16 @@ const init_home=async(to, from, next) => {
               if (!is_admin) store.dispatch('client/get_dress')
               next();
 }
-
+const init_order=(to, from, next) => {
+           let d={ id:to.params.id };
+           store.dispatch('client/get_order',d)
+           next();
+}
 
 const router=new Router({
   routes: [
     { path: '/', name: 'homepage', component:is_admin? Login : HomePage1, beforeEnter:init_home},
     { path: '/index', name: 'homepage1', component: HomePage , beforeEnter:init_home},
-    { path: '/order', name: 'order', component: Order},
     { path: '/delivery', name: 'delivery', component:Delivery},
     { path: '/returnpolicy', name: 'returnpolicy', component:Returnpolicy},
     { path: '/process', name: 'process', component:Process},
@@ -82,6 +87,9 @@ const router=new Router({
           next();
       }
     },
+    { path: '/search_order', component:SearchOrder, meta: { requiresAuth: false}, },
+    { path: '/orders/:id', component:Order1, meta: { requiresAuth: false}, beforeEnter: init_order, },
+    { path: '/order/:id', name: 'order', component: Order},
     { path: '/products', component:Products, meta: { requiresAuth: true },
       beforeEnter:(to, from, next) => {
            store.dispatch('products/get_products')

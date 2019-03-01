@@ -168,14 +168,14 @@ span.el-tag {
        height:auto!important;
 }
 
-.list-text-container{ 
+.list-text-container,.support-text-container{ 
    flex-flow: wrap !important
 }
 .qty-container{
     height:7rem !important;
     align-items:center !important;
 }
-.size-title,.color-title{
+.size-title,.color-title,.support-title{
 	min-width: 2rem;
 }
 @media (max-width: 1000px) {
@@ -183,8 +183,8 @@ span.el-tag {
         grid-template-columns: auto;
         grid-auto-flow: row;    
     }
-    .color-container{ grid-template-columns: repeat(2,auto); }
-    .size-container{ grid-template-columns: repeat(4,auto); }
+    .color-container{ grid-template-columns: repeat(3,auto); }
+    .size-container{ grid-template-columns: repeat(5,auto); }
     .grid-img {
         grid-auto-flow: row;
         grid-template-columns: repeat(4,auto);

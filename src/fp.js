@@ -1,4 +1,9 @@
 import {List,Map} from "immutable"
+import  moment from 'moment';
+import 'moment/locale/zh-tw'
+
+
+
 const  cart2table1=({cart,cart_info:{amount,unit,qty},dict,price,price_1})=>Object.entries(cart)
     .filter(([k,v])=>v>0)
     .map(([k,v])=>[...dict[k],v])
@@ -143,7 +148,7 @@ const set_pack=(pack=[])=>(n,...i)=>{
 
 const init_current_pack=(n=1)=>Array(n).fill(0).map(()=>({color:0,size:0}))
 
-const current_pack_gen=(i=0,n=1,unit=999)=>{
+const current_pack_gen=(i=0,n=1,unit=999,price=[])=>{
        const current_pack=init_current_pack(n);
        return {
             content:current_pack,
@@ -153,14 +158,22 @@ const current_pack_gen=(i=0,n=1,unit=999)=>{
                 unit,
                 amount:unit,
                 discount:0,
+                price:price[i],
             }
         }
 }
 
 const current_pack_decode=({color,size,packs,current_pack:{content,cart_info}})=>{
-    const parse_color_size=(x)=>({color:color[x.color],size:size[x.size],i:[x.color,x.size].join("_")})
+
+    let {qty}=cart_info;
+    let s=content.length;
+    let q=s*qty;
+    let c2={...cart_info,qty:q};
+
+    const parse_color_size=(x)=>({color:color[x.color],size:size[x.size],i:[x.color,x.size].join("_"),qty});
     const c1=content.map(parse_color_size)
-    return {"content":c1,cart_info}
+    //return {"content":c1,cart_info}
+    return {"content":c1,cart_info:c2}
 }
 const place_order1=({content,cart_info,address1,dress,place_order})=>{
    let dns=window.location.href;
@@ -180,6 +193,27 @@ const addRow=({table,row})=>([...table,{...row}])
 const delRow=({i,table}={i:0,table:[]})=>table.filter((x,n)=>n!==i)
 
 const log=x=>console.log(JSON.parse(JSON.stringify(x)))
+
+const url_formator=(u0='/i/orders/:{id}')=>(d={"id":1})=>{
+    let [k,v]=Object.entries(d).flat()
+    let r='(.*):{'+ k +'}';
+    let re=new RegExp(r)
+    let u1=u0.match(re)[1]+v
+    return u1
+}
+
+
+const unix2l=t=>moment.unix(t).format('Y-MM-DD hh:mm')
+const maybe_json=(s="")=> /\[.*\]|\{.*\}/.test(s);
+const tojson=(s="")=>maybe_json(s) ? JSON.parse(s) : ({})
+const is_uuid=(id="")=>{
+      let a='8aa52d58-6b69-4a6a-8a6d-c7dfdcbb9f7f';
+      let b=a.split('-').map(x=>x.length).map(x=>`.{${x}}`).join('-')
+      let re= new RegExp(b);
+      return re.test(id)
+}
+
+
 export {
     cross_join,
     sum,
@@ -219,5 +253,9 @@ export {
     islocal,
     slice1,len1,
     init_current_pack,current_pack_gen,current_pack_decode,
-    place_order1
+    place_order1,
+    url_formator,
+    unix2l,
+    maybe_json,tojson,
+    is_uuid,
 }

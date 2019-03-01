@@ -4,6 +4,8 @@
         <el-row>
           <el-col :span="24">
              <h4>我的订单</h4>
+             <p style="text-align:left">訂單編號:{{ $router.history.current.params.id }}</p>
+
               <el-table :data="content" style="width: 100%" stripe>
                   <el-table-column prop="color.name" label="颜色" width="180">
                   
@@ -25,14 +27,19 @@
                   </el-table-column>
                   <el-table-column prop="size" label="尺寸" width="180"> </el-table-column>
                   <el-table-column prop="qty" label="数量"> </el-table-column> 
+                <!--
                   <el-table-column prop="unit" label="单价"> </el-table-column> 
                   <el-table-column prop="sum" label="小计"> </el-table-column> 
+
+                (节省 {{dress.currency}}{{ cart_info.discount}})
+                 {{cart_info.unit}} * {{cart_info.qty}}   = {{dress.currency}} {{cart_info.amount}}
+                  -->
               </el-table>          
 
 
              <Divider />
 
-             <span> 合计 {{cart_info.unit}} * {{cart_info.qty}}   = {{dress.currency}} {{cart_info.amount}} (节省 {{dress.currency}}{{ cart_info.discount}})</span>
+             <span> 訂單金額: {{dress.currency}} {{cart_info.amount}} </span>
           </el-col>
         </el-row>    
 
@@ -73,6 +80,22 @@ import Divider from "./divider.vue"
 import { createNamespacedHelpers } from 'vuex'
 const { mapState,mapGetters,mapActions,mapMutations } = createNamespacedHelpers('client')
 
+
+/*
+
+
+{
+  "address": "c",
+  "content": " (绣花无袖连衣裙 --黑色--XL--0)  (绣花无袖连衣裙 --米白--XXL--0) {总件数：2, 总价：￥1776.000000}",
+  "create_time": 1551355197,
+  "mobile": "b",
+  "name": "a",
+  "note": ""
+}
+
+*/
+
+
 export default {
   name: 'Order',
   components:{
@@ -84,7 +107,9 @@ export default {
   computed: {
     ...mapState(['content','cart_info','dress','address1']),
   },  
-  data(){ return{ } },
+  data(){ 
+      ;return{ }
+  },
   async created(){ }
 }
 

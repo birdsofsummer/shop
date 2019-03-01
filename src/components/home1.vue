@@ -58,11 +58,11 @@
 
     <v-list dense>
            <v-list-tile v-if="tag.length>0">
-              <v-list-tile-content>風格</v-list-tile-content>
+              <v-list-tile-content class="support-title">風格</v-list-tile-content>
               <v-list-tile-content class="align-start">
                   <v-container grid-list-md>
                     <v-layout row wrap>
-                      <v-flex xs12 sm6 md8 align-start layout text-xs-center >
+                      <v-flex xs12 sm6 md8 align-start layout text-xs-center class="support-text-container">
                          <span class="list-text" v-for="(k,i) in tag" :key="'tag1'+i">{{k}}</span>
                       </v-flex>
                     </v-layout>
@@ -71,11 +71,11 @@
            </v-list-tile>
 
            <v-list-tile v-if="support.length>0">
-              <v-list-tile-content>支持</v-list-tile-content>
+              <v-list-tile-content class="support-title" >支持</v-list-tile-content>
               <v-list-tile-content class="align-start">
                   <v-container grid-list-md>
                     <v-layout row wrap>
-                      <v-flex xs12 sm6 md8 align-start layout text-xs-center >
+                      <v-flex xs12 sm6 md8 align-start layout text-xs-center class="support-text-container">
                          <span  class="list-text" v-for="(k,i) in support" :key="'support1'+i">{{k}}</span>
                       </v-flex>
                     </v-layout>
@@ -252,9 +252,10 @@
       </v-flex>
     </v-layout>
 
+    <v-divider />
     <v-container grid-list-sm fluid >
           <v-layout row wrap align-center  justify-center>
-            <v-flex  xs6 d-flex justify-center align-center >
+            <v-flex  xs12 sm8 md7   d-flex justify-center align-center >
               <v-card flat tile class="d-flex">
                   <Address1 ref="address1"/>
               </v-card>
@@ -340,7 +341,7 @@ export default {
     dress:function(n,o){ 
         let pn = this.price[0] ? this.price[0].qty : 1 ;
         let ps=this.price[0] ? this.price[0].value: 1e10;
-        this.current_pack=current_pack_gen(0,pn,ps)
+        this.current_pack=current_pack_gen(0,pn,ps,this.price)
         this.order=current_pack_decode(this)
         window.document.title=n.name
     },
@@ -371,7 +372,7 @@ export default {
           let 
               q1=this.current_pack.cart_info.qty1
               ,{name,qty,value}=this.price[q1];
-          this.current_pack=current_pack_gen(q1,qty,value)
+          this.current_pack=current_pack_gen(q1,qty,value,this.price)
           this.pack_qty=qty;
           this.order=current_pack_decode(this)
       },
@@ -388,6 +389,7 @@ export default {
                     "unit": 1e10,
                     "amount": 1e10,
                     "discount": 0,
+                    "price":{},
                 }
             },
             order:{},

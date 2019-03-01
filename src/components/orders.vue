@@ -90,6 +90,7 @@
       <template slot-scope="scope">
         <el-button  icon="el-icon-upload" style="margin-right:1rem;" type="text" @click="handleEdit(scope.$index, scope.row)" title="保存" :disabled="current.id == scope.row.id ? false : true">
         </el-button>
+
         <el-popover placement="top" width="160"  trigger="click">
           <p>確定刪除嗎？</p>
           <div style="text-align: right; margin: 0">
@@ -98,6 +99,7 @@
           </div>
           <el-button  type="text"  icon="el-icon-delete"  slot="reference" title="刪除"></el-button>
         </el-popover>
+        <v-btn fab dark  color="cyan" @click="view(scope.row.id)"> <v-icon dark>search</v-icon> </v-btn>         
     </template>
     </el-table-column>
   </el-table>
@@ -122,8 +124,6 @@
 </div>
 </template>
 <script>
-import  moment from 'moment';
-import 'moment/locale/zh-tw'
 
 import {excel} from "./excel"
 import Vue from 'vue'
@@ -133,11 +133,10 @@ import router from "../router"
 import { Message } from 'element-ui';
 import AdminMenu from './admin_menu.vue'
 import Divider from './divider.vue'
-import { rnd, updateById1, getIndexById, removeById, append, cp, add2, has, fill, fill1, uniq, pipe, map, slice1,len1,} from "../fp"
+import { rnd, updateById1, getIndexById, removeById, append, cp, add2, has, fill, fill1, uniq, pipe, map, slice1,len1,unix2l} from "../fp"
 import { createNamespacedHelpers } from 'vuex'
 const { mapState,mapGetters,mapActions,mapMutations } = createNamespacedHelpers('orders')
 
-const unix2l=t=>moment.unix(t).format('Y-MM-DD hh:mm') 
 const _delivery=x=>x.delivery
 const _to_filter=x=>({text:x,value:x})
 const delivery_filter=pipe([map(_delivery),uniq,map(_to_filter)])
@@ -212,6 +211,7 @@ export default {
     },
     methods: {
       ...mapActions([ 'edit_order', 'del_order', ]),
+      view(id){ this.$router.push(`/orders/${id}`) },
       to_excel(){ return excel("#table","orders.xlsx") },
       reset_save(row){ this.current={...row}; },
       handleInput(row,a,e){

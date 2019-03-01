@@ -9,6 +9,7 @@
         <span>SERVICE</span>
       </div>
       <ul class="footer-list"> 
+          <router-link to="/search_order" tag="li">訂單查詢</router-link>
           <router-link to="/process" tag="li">購物流程</router-link>
           <router-link to="/returnpolicy" tag="li">退換貨流程</router-link>
           <router-link to="/delivery" tag="li">配送說明</router-link>

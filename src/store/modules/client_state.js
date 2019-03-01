@@ -29,5 +29,14 @@ export const state={
         },
         content:[],
         cart_info:{ },
+        order:{
+  "address": "c",
+  "content": " (绣花无袖连衣裙 --黑色--XL--0)  (绣花无袖连衣裙 --米白--XXL--0) {总件数：2, 总价：￥1776.000000}",
+  "create_time": 1551355197,
+  "mobile": "b",
+  "name": "a",
+  "note": ""
+}
+
 };
 

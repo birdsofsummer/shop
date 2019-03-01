@@ -26,7 +26,7 @@ const actions={
         ok && commit('set_orders',data)
     },
     del_order({commit},payload){
-         when('删除订单',api.orders.del(payload),()=>commit(del_order,payload))
+         when('删除订单',api.orders.del(payload),()=>commit('del_order',payload))
     },
     edit_order({commit},payload){
          when('修改订单',api.orders.update(payload),()=>commit('edit_order',payload))

@@ -10,7 +10,14 @@ const actions={
       let c=await api.get_detail();
        context.commit("set_dress",c)
     },
-    place_order(context,payload){ api.place_order(payload); },
+    place_order(context,payload){ return api.place_order(payload); },
+    async get_order(context,payload){
+        let a =await api.get_order(payload);
+        if  (a.ok && a.data.name ){
+            context.commit("set_order",a.data);
+        }
+        return a;
+    },
 };
 
 const mutations={
@@ -20,6 +27,9 @@ const mutations={
            state.content=content;
            state.cart_info=cart_info;
        },
+        set_order(state,payload={}){
+           state.order = payload
+        },
 };
 const m={
     namespaced: true,
