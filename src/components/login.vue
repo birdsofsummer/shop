@@ -5,18 +5,21 @@
       <el-header></el-header>
           <el-main>
           <el-row class="login">
-            <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-              <el-form-item label="用户名" prop="username">
+            <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="4rem" class="demo-ruleForm"  >
+
+              <el-form-item label="用户名" prop="username" class="login-input-container" >
                 <el-input type="text" v-model="ruleForm2.username" autocomplete="on"></el-input>
               </el-form-item>
 
-              <el-form-item label="密码" prop="password">
+              <el-form-item label="密码" prop="password" class="login-input-container" >
                 <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
               </el-form-item>
-             <el-form-item>
+
+             <el-form-item class="login-btn-container">
                 <el-button type="primary" @click="submitForm('ruleForm2')">登录</el-button>
                 <el-button @click="resetForm('ruleForm2')">重置</el-button>
               </el-form-item>
+
             </el-form>              
           </el-row>
           </el-main>
@@ -101,5 +104,15 @@ body{
 	z-index: -1;
 	transform: translateX(55%);
 	border-radius: 10px; 
+}
+
+
+@media (max-width: 1000px) {
+.login{
+    width:auto;
+}
+
+
+
 }
 </style>
