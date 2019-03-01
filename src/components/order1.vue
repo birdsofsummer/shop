@@ -28,13 +28,16 @@
 
             <v-divider></v-divider>
             <v-subheader >
-                地址: {{order.address}}
-            </v-subheader>
-            <v-subheader >
                 收件人: {{order.name}}
             </v-subheader>
             <v-subheader >
                 手機: {{order.mobile}}
+            </v-subheader>
+            <v-subheader >
+                地址: {{order.address}}
+            </v-subheader>
+            <v-subheader >
+                E-mail: {{order.email}}
             </v-subheader>
 
             <v-divider></v-divider>
