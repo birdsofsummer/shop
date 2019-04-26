@@ -1,0 +1,52 @@
+[
+  {
+    "id": 58,
+    "dns": "jiakai.zhuixun77.top",
+    "name": "绣花无袖连衣裙 ",
+    "currency": "￥",
+    "price_1": 998,
+    "price_2": 888,
+    "volume": 100,
+    "sales_volume": 80
+  },
+  {
+    "id": 59,
+    "dns": "liyuan.zhuixun77.top",
+    "name": "夏装新款",
+    "currency": "￥",
+    "price_1": 1028,
+    "price_2": 958,
+    "volume": 120,
+    "sales_volume": 20
+  },
+  {
+    "id": 61,
+    "dns": "feng.zhuixun77.top",
+    "name": "秋季新款",
+    "currency": "$",
+    "price_1": 999,
+    "price_2": 998,
+    "volume": 1000,
+    "sales_volume": 200
+  },
+  {
+    "id": 64,
+    "dns": "xue.zhuixun77.top",
+    "name": "【年終特賣！】新款大碼高腰美體收腹拉鏈提臀束身內褲",
+    "currency": "NT$",
+    "price_1": 2133,
+    "price_2": 640,
+    "volume": 999,
+    "sales_volume": 12111
+  },
+  {
+    "id": 65,
+    "dns": "ye.zhuixun77.top",
+    "name": "磁療內衣",
+    "currency": "NT$",
+    "price_1": 3993,
+    "price_2": 1180,
+    "volume": 500,
+    "sales_volume": 51681
+  }
+]

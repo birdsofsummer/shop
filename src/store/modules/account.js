@@ -8,7 +8,7 @@ const state={ };
 const actions={
     async login(context,payload){
         let {ok,data}=await api.login(payload);
-        if (true || ok){
+        if (ok){
             context.commit("save_token",data.token,{ root: true })
             router.push("/admin")
         }

@@ -22,7 +22,7 @@
                    <v-form>
                     <v-container>
                       <v-layout row wrap>
-                        <v-flex xs10 sm6 md8>
+                        <v-flex xs10 sm6 md11>
                             <v-text-field v-model="order_id" label="訂單號" :counter="36" :error-messages="OrderIdErrors"  required @input="$v.order_id.$touch()" @blur="$v.order_id.$touch()" ></v-text-field> 
                         </v-flex>
 

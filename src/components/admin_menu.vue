@@ -14,7 +14,7 @@
                   <el-menu-item index="2-5-3">选项3 </el-menu-item>
                 </el-submenu-->
           </el-submenu>
-          <el-menu-item index="3" ><router-link to="/products1" tag="li">商品卡片</router-link></el-menu-item>
+          <!--el-menu-item index="3" ><router-link to="/products1" tag="li">商品卡片</router-link></el-menu-item-->
           <el-menu-item index="4">
                 <router-link to="/products" tag="li">商品</router-link>
           </el-menu-item>

@@ -28,14 +28,16 @@ function install(){
 }
 
 function build(){
+    d="static"
+    d1="/opt/jiakai/static/"
+
     npm run build
-    cd dist
+    cd $d
     cp index.html template.html
     cp index.html admin.html
     cd ..
-    tar cvf dist.tar dist
-    d="/opt/jiakai/static/"
-    [[ -d $d  ]] &&  cp -R dist/* $d
+    tar cvf $d.tar $d
+    [[ -d $d1  ]] &&  cp -R $d/* $d1
 }
 
 function run(){

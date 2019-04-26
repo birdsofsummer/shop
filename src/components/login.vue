@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import store from "../store"
 import { createNamespacedHelpers } from 'vuex'
@@ -39,6 +39,7 @@ import Footer from './footer.vue'
 import {copy} from "../fp.js"
 
 const { mapState, mapActions } = createNamespacedHelpers('account')
+
 export default {
   name: 'Delivery',
   props: { },

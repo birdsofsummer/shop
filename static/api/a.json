@@ -1,0 +1,91 @@
+{
+  "id": 58,
+  "product_id": 58,
+  "dns": "jiakai.zhuixun77.top",
+  "name": "第一件商品",
+  "currency": "￥",
+  "price_1": 1998,
+  "price_2": 888,
+  "volume": 100,
+  "sales_volume": 80,
+  "cover": [
+    {
+      "uid": "rc-upload-1547192415189-4",
+      "name": "3",
+      "status": "done",
+      "url": "/img/3.jpg"
+    }
+  ],
+  "header": [
+    {
+      "uid": "rc-upload-1547192415189-6",
+      "name": "6",
+      "status": "done",
+      "url": "/img/1.jpg"
+    },
+    {
+      "uid": "rc-upload-1547192415189-6",
+      "name": "6",
+      "status": "done",
+      "url": "/img/2.jpg"
+    },
+
+    {
+      "uid": "rc-upload-1547192415189-6",
+      "name": "6",
+      "status": "done",
+      "url": "/img/6.jpg"
+    },
+    {
+      "uid": "rc-upload-1547192415189-8",
+      "name": "8",
+      "status": "done",
+      "url": "/img/8.jpg"
+    }
+  ],
+  "color": [
+    {
+      "name": "1",
+      "url": "/img/1.jpg"
+    },
+    {
+      "name": "2",
+      "url": "/img/2.jpg"
+    },
+    {
+      "name": "3",
+      "url": "/img/3.jpg"
+    },
+    {
+      "name": "4",
+      "url": "/img/4.jpg"
+    }
+  ],
+  "size": [
+    "XL",
+    "XXL",
+    "3xl",
+    "4xl"
+  ],
+  "price": [
+    {
+      "qty": 1,
+      "value":888,
+      "name":"cccc"
+    },
+    {
+      "qty": 2,
+      "value": 777,
+      "name":"dddd"
+    }
+  ],
+  "tag": [
+    "日韩",
+    "古典"
+  ],
+  "support": [
+    "货到付款",
+    "七天退换"
+  ],
+  "content": "<p><img src=\"/img/10.jpg\"></img></p> <p><img src=\"/img/11.jpg\"></img></p> <p><img src=\"/img/12.jpg\"></img></p> <p><img src=\"/img/13.jpg\"></img></p> <p><img src=\"/img/14.jpg\"></img></p> <p><img src=\"/img/15.jpg\"></img></p> <p><img src=\"/img/16.jpg\"></img></p> <p><img src=\"/img/17.jpg\"></img></p> <p><img src=\"/img/18.jpg\"></img></p> <p><img src=\"/img/19.jpg\"></img></p>"
+}

@@ -1,13 +1,4 @@
-# template.html
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install && npm run serve
 
 https://jiakai.zhuixun77.top
 https://jiakai.zhuixun77.top/#/login
@@ -15,19 +6,8 @@ https://jiakai.zhuixun77.top/#/login
 http://localhost:8080
 http://localhost:8080/#/login
 
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+依葫芦画瓢
+https://cli.vuejs.org/guide/installation.html
+https://vuex.vuejs.org/guide/structure.html
+https://next.vuetifyjs.com/en/themes/premium
+https://element.eleme.cn/#/zh-CN/component/layout

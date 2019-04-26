@@ -3,50 +3,17 @@ import Router from 'vue-router'
 import { Message,Loading } from 'element-ui';
 import store from "../store"
 
-import HomePage from '../components/home'
-import HomePage1 from '../components/home1'
-import Order from '../components/order'
-import Order1 from '../components/order1'
-import SearchOrder from '../components/search_order'
-import Delivery from "../components/delivery"
-import Returnpolicy from "../components/returnpolicy"
-import Process from "../components/process"
 
-import Login from "../components/login"
-import Admin from "../components/admin"
-import Orders from "../components/orders"
-import Products from "../components/products"
-import Products1 from "../components/products1"
-import AddProduct from "../components/add_product"
 
 Vue.use(Router)
-
 const loading=()=>{
    let loadingInstance = Loading.service({ fullscreen: true });
    setTimeout(()=>loadingInstance.close(),300)
 }
 const totop=()=>window.scrollTo(0,0)
-const set_title=(x)=>{ window.document.title=x; }
-const set_title_by_path=(path)=>{
-        const titles={
-            "order":"我的订单",
-            "returnpolicy":"退换货流程",
-            "process":"购物流程",
-            "delivery":"配送说明",
-            "login":"登录",
-            "admin":"控制面板",
-            "orders":"订单列表",
-            "products":"商品列表",
-            "products1":"商品预览",
-        }
-       if (path !="/"){
-          let t=titles[path.replace(/^\//,"")];
-          t && set_title(t)
-       }
-}
 const auth=(to, from, next) => {
        totop();
-       set_title_by_path(to.path);
+       if (to.meta.title) { document.title = to.meta.title }
        let  token=store.getters['token'];
        if (to.matched.some(record => record.meta.requiresAuth)) {
           return  token ? next() :  next({ path: '/login', query: { redirect: to.fullPath } })
@@ -55,9 +22,26 @@ const auth=(to, from, next) => {
 }
 
 const is_admin=/www/.test(location.href)
+
 const init_home=async(to, from, next) => {
               if (!is_admin) store.dispatch('client/get_dress')
               next();
+}
+
+const init_products=(to, from, next) => {
+           store.dispatch('products/get_products')
+           next();
+}
+const init_product= (to, from, next) => {
+           let id=+to.params.id;
+           let d={ id, product_id:id, };
+           store.commit('products/set_product_detail',d)
+           store.dispatch('products/get_product_detail',d)
+           next();
+}
+const  init_orders=async(to, from, next) => {
+          store.dispatch('orders/get_orders')
+          next();
 }
 const init_order=(to, from, next) => {
            let d={ id:to.params.id };
@@ -65,50 +49,43 @@ const init_order=(to, from, next) => {
            next();
 }
 
+const HomePage =()=>import('@/components/home')
+const HomePage1 =()=>import('@/components/home1')
+const Order =()=>import('@/components/order')
+const Order1 =()=>import('@/components/order1')
+const SearchOrder =()=>import('@/components/search_order')
+const Delivery =()=>import('@/components/delivery')
+const Returnpolicy =()=>import('@/components/returnpolicy')
+const Process =()=>import('@/components/process')
+
+const  Login =() => import('@/components/login')
+const  Admin =() => import('@/components/admin')
+const  Orders=() => import('@/components/orders')
+const  Products=()=>import('@/components/products')
+const  Products1=()=>import('@/components/products1')
+const  AddProduct=()=>import('@/components/add_product')
+
 const router=new Router({
   routes: [
-    { path: '/', name: 'homepage', component:is_admin? Login : HomePage1, beforeEnter:init_home},
-    { path: '/index', name: 'homepage1', component: HomePage , beforeEnter:init_home},
-    { path: '/delivery', name: 'delivery', component:Delivery},
-    { path: '/returnpolicy', name: 'returnpolicy', component:Returnpolicy},
-    { path: '/process', name: 'process', component:Process},
-    { path: '/login', name: 'login', component:Login},
-    { path: '/admin',name:"admin", component: Admin, meta: { requiresAuth: true },
+    { path: '/delivery', name: 'delivery', component:Delivery,meta:{title:"配送说明"}},
+    { path: '/returnpolicy', name: 'returnpolicy', component:Returnpolicy,meta:{title:"退换货流程"}},
+    { path: '/process', name: 'process', component:Process,meta:{title:"购物流程"}},
+    { path: '/login', name: 'login', component:Login,meta:{title:"登录"}},
+    { path: '/admin',name:"admin", component: Admin, meta: { requiresAuth: true ,title:"控制面板"},
       children: [
-          { path: 'orders', component:Orders, meta: { requiresAuth: true } } ,
-          { path: 'products', component:Products, meta: { requiresAuth: true } } ,
-//          { path: 'orders/:id', component:Orders, meta: { requiresAuth: true } } ,
-//          { path: 'products/detail/:id', component:AddProduct, meta: { requiresAuth: true } } ,
+          { path: 'orders', component:Orders, meta: { requiresAuth: true,title:"" } } ,
+          { path: 'products', component:Products, meta: { requiresAuth: true,title:"" } } ,
       ]
     },
-    { path: '/orders', component:Orders, meta: { requiresAuth: true },
-      beforeEnter: async(to, from, next) => {
-          store.dispatch('orders/get_orders')
-          next();
-      }
-    },
-    { path: '/search_order', component:SearchOrder, meta: { requiresAuth: false}, },
-    { path: '/orders/:id', component:Order1, meta: { requiresAuth: false}, beforeEnter: init_order, },
-    { path: '/order/:id', name: 'order', component: Order},
-    { path: '/products', component:Products, meta: { requiresAuth: true },
-      beforeEnter:(to, from, next) => {
-           store.dispatch('products/get_products')
-           next();
-      }
-    } ,
-    { path: '/products1', component:Products1, meta: { requiresAuth: true},
-       beforeEnter:(to, from, next) => { store.dispatch('products/get_products'); next(); }
-    } ,
-
-    { path: '/products/detail/:id', component:AddProduct, meta: { requiresAuth: true },
-       beforeEnter: (to, from, next) => {
-           let id=+to.params.id;
-           let d={ id, product_id:id, };
-           store.commit('products/set_product_detail',d)
-           store.dispatch('products/get_product_detail',d)
-           next();
-      }
-    } ,
+    { path: '/order/:id', name: 'order1', component: Order,meta: { requiresAuth: false,title:"下单成功"},},
+    { path: '/', name: 'homepage', component:is_admin? Login : HomePage1, beforeEnter:init_home,},
+    { path: '/index', name: 'homepage1', component: HomePage , meta:{title:"主页"}, beforeEnter:init_home},
+    { path: '/orders',name: 'orders' ,component:Orders, meta: { requiresAuth: true,title:"订单列表" }, beforeEnter:init_orders},
+    { path: '/search_order',name: 'search_order', component:SearchOrder, meta: { requiresAuth: false,title:"搜索订单"}, },
+    { path: '/orders/:id', name: 'order',component:Order1, meta: { requiresAuth: false,title:"订单详情"}, beforeEnter: init_order, },
+    { path: '/products', name: 'products',component:Products, meta: { requiresAuth: true,title:"商品列表" }, beforeEnter:init_products } ,
+    { path: '/products1', name: 'products1', component:Products1, meta: { requiresAuth: true,title:"商品列表"}, beforeEnter:init_products } ,
+    { path: '/products/detail/:id',name: 'product', component:AddProduct, meta: { requiresAuth: true ,title:"商品详情"}, beforeEnter:init_product } ,
   ]
 })
 

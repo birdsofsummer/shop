@@ -20,5 +20,3 @@ new Vue({
   created(){ this.$loading({ fullscreen: true }) },
   mounted () { this.$loading().close() }
 }).$mount('#app')
-
-

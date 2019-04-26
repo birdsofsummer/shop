@@ -85,7 +85,7 @@ const spread=(f)=>(arr=[])=>arr.map(x=>f(x));
 const pspread=(f)=>(arr=[])=>Promise.all(arr.map(x=>f(x)));
 const queque=(arr=[])=>Promise.all(arr)
 const say=(x)=>(y)=>(console.log(x,y),y)
-const say_err=(x)=>(y)=>(console.error(x,y),y)
+const say_error=(x)=>(y)=>(console.error(x,y),y)
 const json_proxy=(o={})=>new Proxy(o ,{ get :(o,n)=>n in o ? JSON.parse(o[n]) :o[n]});
 const int_proxy=(o={})=>new Proxy(o,{get:(o,n)=>+o[n]||0})
 const int_proxys=(kk=[])=>(o={})=>new Proxy(o,{get:(o,n)=>kk.includes(n) ? +o[n]||0 : o[n]})
@@ -227,7 +227,7 @@ export {
     add_keys,
     add1,
     add2,
-    add3,
+    //add3,
     rnd,
     updateById,updateById1,updateRow,delRow,addRow,
     removeById,

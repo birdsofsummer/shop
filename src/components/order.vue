@@ -108,7 +108,7 @@ export default {
     ...mapState(['content','cart_info','dress','address1']),
   },  
   data(){ 
-      ;return{ }
+      return{ }
   },
   async created(){ }
 }

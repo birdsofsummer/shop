@@ -18,9 +18,9 @@
      <v-divider />
          <v-container grid-list-sm fluid v-if="cover.length>0" >
           <v-layout row wrap  align-center  justify-center >
-            <v-flex v-for="(item,n) in cover" :key="'cover'+n" xs8 d-flex justify-center align-center >
+            <v-flex v-for="(item,n) in cover" :key="'cover'+n" xs12 md8 d-flex justify-center align-center >
               <v-card flat tile class="d-flex">
-                <v-img :src="item.url" :lazy-src="item.url" aspect-ratio="1" class="grey lighten-2" >
+                <v-img :src="item.url" :lazy-src="item.url" aspect-ratio="1" class="lighten-2" >
                   <v-layout slot="placeholder" fill-height align-center justify-center ma-0 >
                     <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
                   </v-layout>
@@ -216,7 +216,7 @@
         <v-subheader>套餐名:</v-subheader>
       </v-flex>
 
-      <v-flex xs4>
+      <v-flex xs8 md6 >
         <v-subheader>
           套餐  {{current_pack.cart_info.qty1+1}} {{price[current_pack.cart_info.qty1].name}}
         </v-subheader>
@@ -226,11 +226,11 @@
 
     <v-layout row class="qty-container">
 
-      <v-flex xs4>
+      <v-flex xs4 >
         <v-subheader>數量:</v-subheader>
       </v-flex>
 
-      <v-flex xs4>
+      <v-flex xs8 md6 >
 
         <v-subheader>
         <v-text-field label="購買數量" v-model = "current_pack.cart_info.qty" @keyup="change_pack_qty($event)" suffix="套" ></v-text-field>
@@ -245,7 +245,7 @@
         <v-subheader>價格:</v-subheader>
       </v-flex>
 
-      <v-flex xs4>
+      <v-flex xs8 md6 >
         <v-subheader>
         {{currency}}  {{current_pack.cart_info.amount}}
         </v-subheader>
