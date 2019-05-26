@@ -14,6 +14,7 @@ function getnode(){
     export PATH=$PATH:/bin/node/bin/
     npm install -g @vue/cli
     npm install -g @vue/cli-service-global
+    npm install -g workbox-cli
 }
 
 
@@ -30,8 +31,8 @@ function install(){
 function build(){
     d="static"
     d1="/opt/jiakai/static/"
-
     npm run build
+    workbox generateSW workbox-config.js
     cd $d
     cp index.html template.html
     cp index.html admin.html

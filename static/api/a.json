@@ -69,12 +69,12 @@
   ],
   "price": [
     {
-      "qty": 1,
+      "qty": 10,
       "value":888,
       "name":"cccc"
     },
     {
-      "qty": 2,
+      "qty": 20,
       "value": 777,
       "name":"dddd"
     }

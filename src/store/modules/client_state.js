@@ -8,18 +8,34 @@ export const state={
               "currency": "￥",
               "price_1": 1e10,
               "price_2": 1e10,
+              "price": [
+                  { "qty": 1, "value": 1e10,"name":"test1"},
+                  { "qty": 2, "value": 1e9,"name":"test2"},
+              ],
               "volume": 1e10,
               "sales_volume": 1e10,
-              "cover": [ ],
-              "header": [ ],
+              "cover": [
+                    {
+                      "uid": "rc-upload-1547192415189-4",
+                      "name": "3",
+                      "status": "done",
+                      "url": "/img/1.jpg"
+                    }
+               ],
+              "header": [
+                      {
+                      "uid": "rc-upload-1547192415189-6",
+                      "name": "6",
+                      "status": "done",
+                      "url": "/img/1.jpg"
+                      },
+              ],
               "color": [{name:"灰色",url:"/img/1.jpg"}],
               "size": ["均码"],
-              "price": [ { "qty": 1, "value": 1e10,"name":"test1"}, { "qty": 2, "value": 1e9,"name":"test2"}, ],
               "tag": [ ],
               "support": [ ],
-              "content": "",
+              "content":"" ,
         },
-
         address1:{
             name:"",
             address:"",

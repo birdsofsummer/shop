@@ -1,0 +1,26 @@
+language: node_js
+node_js: 11
+sudo: required
+branches:
+  only:
+  - master
+cache:
+  directories:
+    - node_modules    
+addons:
+  ssh_known_hosts:
+  - gz.oidiotlin.com
+install:
+    - npm install -g @vue/cli
+    - npm install -g @vue/cli-service-global
+    - npm install -g workbox-cli
+    - npm install
+#before_script:
+ # - npm install -g gulp
+script:
+    - npm run build
+after_script:
+    - workbox generateSW workbox-config.js
+    - cp static/index.html static/template.html
+    - cp static/index.html static/admin.html
+  #- sshpass -e scp -o stricthostkeychecking=no -r static root@45.76.145.2:/opt/jiakai/

@@ -26,7 +26,7 @@ import store from "../store"
 import { Loading,Message } from 'element-ui';
 import { mapState,createNamespacedHelpers } from 'vuex'
 import {addr,img_path} from "../path"
-import {islocal} from '../fp'
+import {islocal,find_filename} from '../fp'
 const { mapGetters,mapActions,mapMutations } = createNamespacedHelpers('products')
 
 export default {
@@ -60,12 +60,14 @@ export default {
             this.dialogImageUrl = file.url;
             this.dialogVisible = true;
           },
-		  onSuccess(res, file){
+		  onSuccess(res, file,/*fileList*/){
                this.$message.success(':)');
                this.loadingInstance.close();
-               let {name}=file;
+               let {name,uid}=file;
+               let name1=find_filename(name)
+               let {fileList}=this;
                let url=this.prefix + res.file_name;
-               let d={[this.name]:[...fileList,{name,url}]}
+               let d={[this.name]:[...fileList,{name:name1,url,uid:`${uid}`}]}
                this.set_product_detail(d)
 		  },
           onError(err, file, fileList){

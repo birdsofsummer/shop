@@ -22,9 +22,13 @@ const auth=(to, from, next) => {
 }
 
 const is_admin=/www/.test(location.href)
+const is_home=((x)=> {return x!= "localhost" && x.match(/\./ig).length==1})(location.hostname)
 
 const init_home=async(to, from, next) => {
-              if (!is_admin) store.dispatch('client/get_dress')
+              if (!(is_admin || is_home)) store.dispatch('client/get_dress')
+              if (is_home) {
+                   store.dispatch('products/get_products')
+              }
               next();
 }
 
@@ -64,12 +68,15 @@ const  Orders=() => import('@/components/orders')
 const  Products=()=>import('@/components/products')
 const  Products1=()=>import('@/components/products1')
 const  AddProduct=()=>import('@/components/add_product')
+const  UserInstructions=()=>import('@/components/user_instructions')
 
 const router=new Router({
+  mode: 'history',
   routes: [
     { path: '/delivery', name: 'delivery', component:Delivery,meta:{title:"配送说明"}},
     { path: '/returnpolicy', name: 'returnpolicy', component:Returnpolicy,meta:{title:"退换货流程"}},
     { path: '/process', name: 'process', component:Process,meta:{title:"购物流程"}},
+    { path: '/user_instructions', name: 'user_instructions', component:UserInstructions,meta:{title:"用戶須知"}},
     { path: '/login', name: 'login', component:Login,meta:{title:"登录"}},
     { path: '/admin',name:"admin", component: Admin, meta: { requiresAuth: true ,title:"控制面板"},
       children: [
@@ -78,7 +85,7 @@ const router=new Router({
       ]
     },
     { path: '/order/:id', name: 'order1', component: Order,meta: { requiresAuth: false,title:"下单成功"},},
-    { path: '/', name: 'homepage', component:is_admin? Login : HomePage1, beforeEnter:init_home,},
+    { path: '/', name: 'homepage', component:is_admin? Login : is_home ? Products1 : HomePage1, beforeEnter:init_home,},
     { path: '/index', name: 'homepage1', component: HomePage , meta:{title:"主页"}, beforeEnter:init_home},
     { path: '/orders',name: 'orders' ,component:Orders, meta: { requiresAuth: true,title:"订单列表" }, beforeEnter:init_orders},
     { path: '/search_order',name: 'search_order', component:SearchOrder, meta: { requiresAuth: false,title:"搜索订单"}, },

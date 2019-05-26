@@ -1,7 +1,7 @@
 <template>
   <div id="home">
 
-  <v-carousel height=800 interval=2000>
+  <v-carousel interval=2000 v-if="header.length>0" >
     <v-carousel-item v-for="(item,i) in header" :key="'header'+i" :src="item.url" ></v-carousel-item>
   </v-carousel>
  <v-divider />
@@ -16,20 +16,13 @@
         <v-chip color="primary" pill v-for="(k,i) in support" :key="'support'+i" > {{k}} </v-chip -->
 
      <v-divider />
-         <v-container grid-list-sm fluid v-if="cover.length>0" >
-          <v-layout row wrap  align-center  justify-center >
-            <v-flex v-for="(item,n) in cover" :key="'cover'+n" xs12 md8 d-flex justify-center align-center >
-              <v-card flat tile class="d-flex">
-                <v-img :src="item.url" :lazy-src="item.url" aspect-ratio="1" class="lighten-2" >
-                  <v-layout slot="placeholder" fill-height align-center justify-center ma-0 >
-                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                  </v-layout>
-                </v-img>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-   
+     <v-container grid-list-sm  v-if="cover.length>0"  v-for="(item,n) in cover" :key="'cover'+n" class="cover-container" text-xs-center justify-center>
+         <v-layout row justify-center>
+            <p>
+            <img  class="cover" :src="item.url" />
+            </p>
+         </v-layout>
+    </v-container>
     <div v-html="content" class="product-detail-container"> {{content}} </div>
     <v-divider />
 
@@ -119,6 +112,8 @@
            </v-list-tile>
   </v-list>
  <v-divider />
+
+  <a name="buy"></a>
   <v-list>
            <v-list-tile>
               <v-list-tile-content>套餐</v-list-tile-content>
@@ -209,8 +204,6 @@
 
 
  <v-divider />
-
-
     <v-layout row>
       <v-flex xs4>
         <v-subheader>套餐名:</v-subheader>
@@ -269,7 +262,9 @@
     <Divider />
     <Footer />
   <el-row></el-row>
-
+     <v-btn color="red" text dark fab size="large"  href="#buy" class="buy-now" :fixed="true" :right="true"  >
+         <v-icon>favorite</v-icon>  
+     </v-btn>
 </div>
 </template>
 
@@ -292,7 +287,7 @@ import {
     minby, 
     maxby, 
     getprice,
-    copy,
+    copy,cp,
     add_keys,
     each,
     mapState1,
@@ -344,6 +339,8 @@ export default {
         this.current_pack=current_pack_gen(0,pn,ps,this.price)
         this.order=current_pack_decode(this)
         window.document.title=n.name
+        this.change_pack_qty1()
+        this.$nextTick(function(){ }) 
     },
     order:function(n,o){
         this.set_cart(n)

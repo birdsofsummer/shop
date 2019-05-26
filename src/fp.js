@@ -214,6 +214,13 @@ const is_uuid=(id="")=>{
 }
 
 
+const find_filename=(n="")=>{
+   const extra=(n)=>/\./.test(n)?n.split('.') :n
+   let [name1,]=extra(n)
+   return name1
+}
+
+
 export {
     cross_join,
     sum,
@@ -258,4 +265,5 @@ export {
     unix2l,
     maybe_json,tojson,
     is_uuid,
+    find_filename,
 }

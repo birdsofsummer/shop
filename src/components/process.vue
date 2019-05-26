@@ -52,6 +52,8 @@
 </template>
 
 <script>
+
+
 import store from "../store"
 import Footer from './footer.vue'
 import Divider from './divider.vue'

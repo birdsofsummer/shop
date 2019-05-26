@@ -1,7 +1,7 @@
 import {api,when} from "../../fetch"
 import router from '../../router'
 import { Message } from 'element-ui';
-import { rnd, updateById1, getIndexById, removeById, append, cp, add2, has, fill, fill1, uniq, pipe, map, int_fomator1, say} from "../../fp"
+import { rnd, updateById1, getIndexById, removeById, append, cp, add2, has, fill, fill1, uniq, pipe, map, int_fomator1, say,drop} from "../../fp"
 
 
 const product_formator=int_fomator1(["price","vol"])
@@ -10,7 +10,7 @@ const state={
     products:[],
     product:{
         "id": 0,
-        "dns": "jiakai.zhuixun77.top",
+        "dns":window.location.host,
         "name": "绣花无袖连衣裙",
         "currency": "￥",
         "price_1": 998,
@@ -41,7 +41,9 @@ const actions={
     },
     async get_product_detail({commit},payload){
        let {ok,data}=await api.product_detail.read(payload);
-         ok && commit("set_product_detail",data);
+         //忽略后台发来的错误id
+         const data1=drop(data)('product_id')
+         ok && commit("set_product_detail",data1);
     },
     async add_product({commit},payload){
          let d=product_formator(payload)

@@ -1,12 +1,13 @@
 npm install && npm run serve
 
-https://jiakai.zhuixun77.top
+https://feng.hkhkf.xyz/
 
-https://jiakai.zhuixun77.top/#/login
+https://feng.hkhkf.xyz/login
+
 
 http://localhost:8080
 
-http://localhost:8080/#/login
+http://localhost:8080/login
 
 依葫芦画瓢
 

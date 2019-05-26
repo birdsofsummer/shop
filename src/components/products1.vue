@@ -20,9 +20,7 @@
              <el-row :gutter="10">
     <div class="mygrid-5">
          <el-card shadow="hover"  v-for="(k,i) in data" :title="k.dns">
-
-              <div  class="cover" ><img src="/img/2.jpg"/></div>
-
+              <div  class="cover" ><img :src="k.cover && k.cover.length ? k.cover[0].url : '/img/2.jpg'"/></div>
               <div  key="k.id" class="product-title ">
                 <a class="product-title" :href="'https://'+k.dns" target="_blank" ><span>{{k.name}}</span></a>
               </div>
@@ -175,7 +173,7 @@ export default {
 .mygrid-5{
     transition:0.3s;
 	display: grid;
-	grid-auto-flow: column;
+	grid-auto-flow: row;
 	grid-template-columns: repeat(5,minmax(auto,18%));
 	grid-gap: 1em;
     justify-content: center;
@@ -201,7 +199,7 @@ export default {
     .cover{ 
             img{
                 object-fit: cover;
-                
+                width: 100%;
                 &:hover{
                     transform: translateY(-1px);
                     opacity:0.9;
