@@ -24,6 +24,6 @@ after_script:
     - cp static/index.html static/template.html
     - cp static/index.html static/admin.html
     - git add --all .
-    - git commit --message "ci"
+    - git commit --message "tt"
     - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" master:master
     - sshpass -e ssh -o stricthostkeychecking=no "/opt/jiakai/vps.sh"
