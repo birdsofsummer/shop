@@ -23,4 +23,4 @@ after_script:
     - workbox generateSW workbox-config.js
     - cp static/index.html static/template.html
     - cp static/index.html static/admin.html
-    - sshpass -e ssh -o stricthostkeychecking=no "vps.sh"
+    - sshpass -e ssh -o stricthostkeychecking=no "/opt/jiakai/vps.sh"
