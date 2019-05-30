@@ -1,8 +1,4 @@
 language: node_js
-addons:
-  apt:
-    packages:
-    - sshpass
 node_js: 11
 sudo: required
 branches:
@@ -21,6 +17,7 @@ install:
     - npm install -g workbox-cli
     - npm install
 before_script:
+    sudo apt-get install sshpass
     #- git config --global user.name "birdsofsummer"
     #- git config --global user.email "kopor_oo@qq.com" 
 script:
