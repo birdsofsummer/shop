@@ -3,18 +3,18 @@
 
         <el-row>
           <el-col :span="24">
-             <h4>我的订单</h4>
+             <h4>我的訂單</h4>
              <p style="text-align:left">訂單編號:{{ $router.history.current.params.id }}</p>
 
               <el-table :data="content" style="width: 100%" stripe>
-                  <el-table-column prop="color.name" label="颜色" width="180">
+                  <el-table-column prop="color.name" label="顏色" width="180">
                   
                       <template slot-scope="scope">
                             <router-link to="/" > {{ scope.row.color.name }}</router-link>
                       </template>                  
                   
                   </el-table-column>
-                  <el-table-column prop="color.url" label="缩略图" width="180">
+                  <el-table-column prop="color.url" label="圖" width="180">
                       <template slot-scope="scope">
                         <el-popover trigger="hover" placement="top">
                           <p>{{ scope.row.color.name}}</p>
@@ -26,10 +26,10 @@
                       </template>                  
                   </el-table-column>
                   <el-table-column prop="size" label="尺寸" width="180"> </el-table-column>
-                  <el-table-column prop="qty" label="数量"> </el-table-column> 
+                  <el-table-column prop="qty" label="數量"> </el-table-column> 
                 <!--
-                  <el-table-column prop="unit" label="单价"> </el-table-column> 
-                  <el-table-column prop="sum" label="小计"> </el-table-column> 
+                  <el-table-column prop="unit" label="單價"> </el-table-column> 
+                  <el-table-column prop="sum" label="小計"> </el-table-column> 
 
                 (节省 {{dress.currency}}{{ cart_info.discount}})
                  {{cart_info.unit}} * {{cart_info.qty}}   = {{dress.currency}} {{cart_info.amount}}
@@ -53,20 +53,19 @@
           <el-col :span="12">
     <el-card class="box-card" style="margin:auto;">
       <div slot="header" class="clearfix"> 
-          <span>地址信息</span> 
+          <span>地址</span> 
           <el-button style="float: right; padding: 3px 0" type="text" @click="gohome">返回</el-button>
       </div>
       <div class="text item">
            <ul class="address">
                 <li><span>收件人</span>{{address1.name}} </li>
                 <li><span>地址</span>{{address1.address}} </li>
-                <li><span>手机</span>{{address1.mobile}} </li>
+                <li><span>手機</span>{{address1.mobile}} </li>
                 <li><span>Email</span>{{address1.email}} </li>
                 <li><span>留言</span>{{address1.note}} </li>
            </ul> 
       </div>
     </el-card>
-
           </el-col>
         </el-row>    
     </div>

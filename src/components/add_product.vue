@@ -2,10 +2,6 @@
   <div id="product_detail">
 
     <el-container>
-      <el-header>
-          <AdminMenu  active="4" />
-          <div class="line"></div>
-      </el-header>
 
           <el-main style="text-align:left">
               <el-row> 封面<Upload name="cover" /> </el-row>

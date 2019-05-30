@@ -340,7 +340,7 @@ export default {
         this.order=current_pack_decode(this)
         window.document.title=n.name
         this.change_pack_qty1()
-        this.$nextTick(function(){ }) 
+        this.$nextTick(function(){}) 
     },
     order:function(n,o){
         this.set_cart(n)
@@ -382,7 +382,7 @@ export default {
                   "content": [ { "color": 0, "size": 0 }, ],
                   "cart_info": {
                     "qty": 1,
-                    "qty1": 1,
+                    "qty1": 0,
                     "unit": 1e10,
                     "amount": 1e10,
                     "discount": 0,
@@ -393,8 +393,8 @@ export default {
         }
   },
   created(){},
-  mounted (){},
-  updated(){ },
+  mounted(){ this.name && this.change_pack_qty1() },
+  updated(){},
 }
 
 

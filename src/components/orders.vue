@@ -2,10 +2,6 @@
 
 <div>
     <el-container>
-      <el-header>
-          <AdminMenu  active="5" />
-          <div class="line"></div>
-      </el-header>
           <el-main>
               <el-row style="text-align:left;">
                   <div class="search-bar">

@@ -80,19 +80,20 @@ const router=new Router({
     { path: '/login', name: 'login', component:Login,meta:{title:"登录"}},
     { path: '/admin',name:"admin", component: Admin, meta: { requiresAuth: true ,title:"控制面板"},
       children: [
-          { path: 'orders', component:Orders, meta: { requiresAuth: true,title:"" } } ,
-          { path: 'products', component:Products, meta: { requiresAuth: true,title:"" } } ,
+          { path: 'orders', component:Orders, meta: { requiresAuth: true,title:"订单列表" },beforeEnter:init_orders} ,
+          { path: 'orders/:id', name: 'order',component:Order1, meta: { requiresAuth: false,title:"订单详情"}, beforeEnter: init_order, },
+          { path: 'products', component:Products, meta: { requiresAuth: true,title:"商品列表" },beforeEnter:init_products} ,
+          { path: 'products/:id',name: 'product', component:AddProduct, meta: { requiresAuth: true ,title:"商品详情"}, beforeEnter:init_product } ,
+          { path: 'products1', component:Products1, meta: { requiresAuth: true,title:"所有宝贝O(∩_∩)O哈哈~" },beforeEnter:init_products} ,
       ]
     },
-    { path: '/order/:id', name: 'order1', component: Order,meta: { requiresAuth: false,title:"下单成功"},},
     { path: '/', name: 'homepage', component:is_admin? Login : is_home ? Products1 : HomePage1, beforeEnter:init_home,},
     { path: '/index', name: 'homepage1', component: HomePage , meta:{title:"主页"}, beforeEnter:init_home},
-    { path: '/orders',name: 'orders' ,component:Orders, meta: { requiresAuth: true,title:"订单列表" }, beforeEnter:init_orders},
     { path: '/search_order',name: 'search_order', component:SearchOrder, meta: { requiresAuth: false,title:"搜索订单"}, },
+    { path: '/order/:id', name: 'order1', component: Order,meta: { requiresAuth: false,title:"下单成功"},},
     { path: '/orders/:id', name: 'order',component:Order1, meta: { requiresAuth: false,title:"订单详情"}, beforeEnter: init_order, },
-    { path: '/products', name: 'products',component:Products, meta: { requiresAuth: true,title:"商品列表" }, beforeEnter:init_products } ,
-    { path: '/products1', name: 'products1', component:Products1, meta: { requiresAuth: true,title:"商品列表"}, beforeEnter:init_products } ,
-    { path: '/products/detail/:id',name: 'product', component:AddProduct, meta: { requiresAuth: true ,title:"商品详情"}, beforeEnter:init_product } ,
+    { path: '/products1', name: 'products1', component:Products1, meta: { requiresAuth: false,title:"商品列表"}, beforeEnter:init_products } ,
+    { path: '/products/:id',name: 'product', component:AddProduct, meta: { requiresAuth: true ,title:"商品详情"}, beforeEnter:init_product } ,
   ]
 })
 

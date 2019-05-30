@@ -44,10 +44,6 @@
 
 
     <el-container>
-      <el-header>
-          <AdminMenu  active="4" />
-          <div class="line"></div>
-      </el-header>
           <el-main>
               <el-row style="text-align:left;">
                   <div class="search-bar">
@@ -228,7 +224,7 @@ export default {
           this.default_product={...row} 
           this.dialogFormVisible= true
       },
-      handleEdit1(index, row) { router.history.push(`/products/detail/${row.id}`) },
+      handleEdit1(index, row) { router.history.push(`products/${row.id}`) },
       handleDelete(index, row) {
             this.del_product(row)
       },

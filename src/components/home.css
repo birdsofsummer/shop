@@ -223,3 +223,7 @@ span.el-tag {
 }
 
 
+.v-carousel__controls{
+    background: none;
+}
+
