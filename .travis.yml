@@ -29,7 +29,8 @@ after_script:
     - date >static/ttt
     - git add --all .
     - git commit --message "tt"
-    - git push --quiet --force  "https://${GH_TOKEN}@${GH_REF}" master:dist
+    - git push  --force  "https://${GH_TOKEN}@${GH_REF}" master:dist
     - sshpass -e ssh root@45.76.145.2 -o stricthostkeychecking=no "/opt/jiakai/vps.sh"
+    - ls 
     - cat static/ttt
     - echo done
