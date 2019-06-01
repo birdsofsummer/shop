@@ -1,3 +1,5 @@
+[![travis-ci](https://api.travis-ci.com/birdsofsummer/shop.svg?branch=master)](https://travis-ci.com/birdsofsummer/shop/)
+
 npm install && npm run serve
 
 https://feng.hkhkf.xyz/

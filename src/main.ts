@@ -29,6 +29,7 @@ Vue.use(VueLazyload,{
 
 })
 Vue.config.productionTip = false
+
 new Vue({
   store,
   router,
@@ -37,5 +38,4 @@ new Vue({
   created(){ this.$loading({ fullscreen: true }) },
   mounted () { this.$loading().close() }
 }).$mount('#app')
-
 
