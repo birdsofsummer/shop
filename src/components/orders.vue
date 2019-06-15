@@ -37,15 +37,15 @@
 
     <el-table-column sortable type="index" :index="indexMethod"> </el-table-column>    
 
-    <el-table-column sortable label="下單時間" prop="create_time" width="160"> 
+    <el-table-column sortable label="下單時間" prop="create_time" width="180"> 
       <template slot-scope="scope">
         <i class="el-icon-time"></i> <span style="margin-left: 10px">{{scope.row.create_time|create_time}}</span>
       </template>
     </el-table-column>
-    </el-table-column> <el-table-column sortable label="ID" prop="id" width="160"> </el-table-column>
-    </el-table-column> <el-table-column sortable label="貨號" prop="product_id" width="150"> </el-table-column> 
+    </el-table-column> <el-table-column sortable label="ID" prop="id" width="80"> </el-table-column>
+    </el-table-column> <el-table-column sortable label="貨號" prop="product_id" width="80"> </el-table-column> 
 
-    <el-table-column sortable label="收件人" prop="name" width="150" >
+    <el-table-column sortable label="收件人" prop="name" width="80" >
       <template slot-scope="scope">
         <el-popover trigger="hover" placement="top">
             <el-form label-position="left" class="demo-table-expand">
@@ -58,18 +58,23 @@
       </template>
     </el-table-column>
 
-    <el-table-column sortable   label="詳情" class-name="hide"  prop="content" > </el-table-column>
+    <el-table-column sortable   label="詳情"  prop="content"  width="650"> </el-table-column>
+    <el-table-column sortable   label="地址" class-name=""  prop="address" width="180" > </el-table-column>
+    <el-table-column sortable   label="电话" class-name=""  prop="mobile" width="180" > </el-table-column>
+    <el-table-column sortable   label="Email" class-name=""  prop="email" width="180" > </el-table-column>
+    <el-table-column sortable   label="留言" class-name=""  prop="note" width="180" > </el-table-column>
 
-    <el-table-column sortable   label="備註" prop="remark"  width="250"  >
+    <el-table-column sortable   label="備註" prop="remark"  width="180"  >
       <template slot-scope="scope">
         <span contenteditable="true"  placeholder="請輸入備註"  @input="handleInput(scope.row ,'remark',$event)" > {{ scope.row.remark}}</span>
       </template>
     </el-table-column>
 
-    <el-table-column prop="delivery" label="快遞" width="100" 
+    <el-table-column prop="delivery" label="快遞"  
       :filters="delivery"
       :filter-method="filterTag"
       filter-placement="bottom-end"
+      width="180" 
       >
       <template slot-scope="scope">
         <el-tag :type="scope.row.delivery? 'primary' : 'success'" disable-transitions>
@@ -78,22 +83,26 @@
       </template>
     </el-table-column>
 
-    <el-table-column align="left"  width="30"   >
+    <el-table-column align="left" width="180" >
       <template slot="header" slot-scope="scope">
         <span>操作</span>
       </template>
     
       <template slot-scope="scope">
-        <el-button  icon="el-icon-upload" style="margin-right:1rem;" type="text" @click="handleEdit(scope.$index, scope.row)" title="保存" :disabled="current.id == scope.row.id ? false : true">
-        </el-button>
-
+        <!--el-button  icon="el-icon-upload" style="margin-right:1rem;" type="text" @click="handleEdit(scope.$index, scope.row)" title="保存" :disabled="current.id == scope.row.id ? false : true"> </el-button-->
+        <v-btn fab dark color="cyan" @click="handleEdit(scope.$index, scope.row)" title="保存" >
+          <v-icon dark>cloud_upload</v-icon>
+        </v-btn>        
         <el-popover placement="top" width="160"  trigger="click">
           <p>確定刪除嗎？</p>
           <div style="text-align: right; margin: 0">
             <el-button  type="text" >取消</el-button>
             <el-button type="success" icon="el-icon-check" circle size="mini"   @click="handleDelete(scope.$index, scope.row)"></el-button>
           </div>
-          <el-button  type="text"  icon="el-icon-delete"  slot="reference" title="刪除"></el-button>
+            <v-btn fab dark color="cyan" slot="reference" title="刪除">
+              <v-icon dark>remove</v-icon>
+            </v-btn>
+              <!--el-button  type="text"  icon="el-icon-delete"  ></el-button-->
         </el-popover>
         <v-btn fab dark  color="cyan" @click="view(scope.row.id)"> <v-icon dark>search</v-icon> </v-btn>         
     </template>

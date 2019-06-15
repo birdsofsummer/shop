@@ -1,0 +1,22 @@
+<script>
+    export default {
+      name: 'Cf',
+      props: { },
+      components: {
+       // Divider,Footer,
+      },
+      data() {
+          return {name:123}
+      },
+      watch: {},
+      computed: {},
+      methods: {},
+      async created(){ },
+      async mounted(){
+            console.log('11111111111111')
+
+      },
+    }
+
+</script>
+

@@ -10,7 +10,7 @@ const actions={
         let {ok,data}=await api.login(payload);
         if (ok||islocal){
             context.commit("save_token",data.token,{ root: true })
-            router.push("/admin")
+            router.push("/admin/cf")
         }
     },
     relogin(context,payload){

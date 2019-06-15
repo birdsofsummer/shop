@@ -3,6 +3,7 @@ export const state={
    services,
    dress:{
               "id":0,
+              "pix":"333061584048957",
               "dns": "",
               "name": "",
               "currency": "￥",
@@ -14,22 +15,8 @@ export const state={
               ],
               "volume": 1e10,
               "sales_volume": 1e10,
-              "cover": [
-                    {
-                      "uid": "rc-upload-1547192415189-4",
-                      "name": "3",
-                      "status": "done",
-                      "url": "/img/1.jpg"
-                    }
-               ],
-              "header": [
-                      {
-                      "uid": "rc-upload-1547192415189-6",
-                      "name": "6",
-                      "status": "done",
-                      "url": "/img/1.jpg"
-                      },
-              ],
+              "cover": [],
+              "header": [],
               "color": [{name:"灰色",url:"/img/1.jpg"}],
               "size": ["均码"],
               "tag": [ ],

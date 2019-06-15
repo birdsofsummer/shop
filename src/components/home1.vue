@@ -393,7 +393,12 @@ export default {
         }
   },
   created(){},
-  mounted(){ this.name && this.change_pack_qty1() },
+  mounted(){ 
+      this.name && this.change_pack_qty1() 
+      const pix=this.pix||'333061584048957'
+      fbq('init', pix);
+      fbq('track', 'PageView')
+  },
   updated(){},
 }
 

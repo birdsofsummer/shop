@@ -9,9 +9,12 @@ import 'vuetify/dist/vuetify.min.css'
 import 'babel-polyfill'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './main.styl'
+import {reg_sw} from "./msg"
 //import { Loading } from 'element-ui';
 
-navigator.serviceWorker.register('sw.js', { scope: '/' })
+reg_sw('/sw.js')
+
+
 Vue.use(Vuetify)
 Vue.use(VueLazyload,{
   preLoad: 1.3,

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title></title>
+    <script>
+      </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+    <script>
+      const PREFIX='@@'
+      const PREFIX1='--'
+      const site=new URL(location.href.split(PREFIX1)[1])
+      const add_prefix=(u="")=>`${u}`.startsWith(PREFIX) ? u : PREFIX + u
+      const change_host=k=>u=>{
+            a=new URL(u.href)
+            a.protocol=site.protocol
+            a.host=site.host
+            u[k]=a
+      }
+      const change_link=()=>{
+          for (let i of ["href",'src']){
+              [...document.querySelectorAll(`[${i}]`)]
+                .filter(x=>/local/.test(x[i]))
+                .map(change_host(i))
+          }
+       }
+      const get=u=>fetch(add_prefix(u)).then(x=x=>x.text())
+      const init=async ()=>{
+            await navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            d=await get(site)
+            document.querySelector('#app').innerHTML=d
+            change_link()
+        }
+       init()
+    </script>
+
+ </html>
+

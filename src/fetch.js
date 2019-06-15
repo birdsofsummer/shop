@@ -114,8 +114,10 @@ const creat_api1=(urls={})=>{
       return aa;
 }
 
-
-
+const get_dash=async()=>{
+    let u=`https://steep-dew-b181.qing.workers.dev/`
+    return get1(u)
+}
 
 const api0=creat_api1(addr);
 const api1={
@@ -161,6 +163,7 @@ const api1={
        }
     },
     login:http.post("/i/login"),
+    dash:get_dash,
 }
 const api=copy(api0)(api1)
 export default http

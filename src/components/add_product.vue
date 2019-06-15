@@ -4,6 +4,10 @@
     <el-container>
 
           <el-main style="text-align:left">
+              <el-row> 
+                  <h4>facebook像素ID</h4>
+                  <el-input type="textarea" autosize :rows="5" placeholder="333061584048957" v-model="product_detail.pix"> </el-input>
+              </el-row>
               <el-row> 封面<Upload name="cover" /> </el-row>
               <el-row> 輪播<Upload name="header" /> </el-row>
               <el-row> 顏色 <Upload name="color" /> </el-row>

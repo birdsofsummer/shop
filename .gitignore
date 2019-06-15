@@ -3,6 +3,7 @@ node_modules
 /dist
 /tmp
 /static
+/public/img
 b1
 # local env files
 .env.local
