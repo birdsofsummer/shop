@@ -92,6 +92,16 @@ const get1=async u=>{
 }
 
 const post=u=>d=>window.fetch(u,{method:"post",body:JSON.stringify(d)})
+
+const cf={
+    "dash":`https://cf.qing.workers.dev`,
+    "dns":`https://cf.qing.workers.dev/dns`,
+}
+
+const get_dash=()=>get1(cf.dash)
+const add_dns=(name)=>post(cf.dns)({name})
+
+
 const creat_api=(name)=>{
       let m={
             'get':['list','read'],
@@ -114,10 +124,6 @@ const creat_api1=(urls={})=>{
       return aa;
 }
 
-const get_dash=async()=>{
-    let u=`https://steep-dew-b181.qing.workers.dev/`
-    return get1(u)
-}
 
 const api0=creat_api1(addr);
 const api1={
@@ -164,6 +170,8 @@ const api1={
     },
     login:http.post("/i/login"),
     dash:get_dash,
+    add_dns:add_dns,
+
 }
 const api=copy(api0)(api1)
 export default http

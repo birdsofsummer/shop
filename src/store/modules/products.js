@@ -48,6 +48,9 @@ const actions={
     async add_product({commit},payload){
          let d=product_formator(payload)
          when("新增商品",api.products.creat(d),(ok,data)=>commit('add_product',data));
+         let {dns}=d
+         let d1=dns.split('.')[0]
+         await api.add_dns(d1)
     },
     async edit_product({commit},payload){
          let d=product_formator(payload)
